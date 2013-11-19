@@ -45,4 +45,9 @@ if(isset($google_maps_keys) || isset($google_maps_key)) {
     	<a href="import<?php echo $page_ext; ?>"><?php echo msg('IMPORT'); ?></a>
   </li> 
 <?php } ?>
+<?php if(!$read_only) { ?>
+	<li class="export">
+    	<a href="fbgroup<?php echo $page_ext; ?>"><?php echo msg('FACEBOOK'); ?></a>
+  </li> 
+<?php } ?>
 </ul>

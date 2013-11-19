@@ -71,7 +71,7 @@ function saveAddress($addr_array, $group_name = "") {
     	$src_tbl = $table;
     }
 
-    $sql = "INSERT INTO $table ( domain_id, id, firstname, middlename, lastname, nickname, company, title, address, home, mobile, work, fax, email, email2, email3, homepage, aday, amonth, ayear, bday, bmonth, byear, address2, phone2, photo, notes, created, modified)
+    $sql = "INSERT INTO $table ( domain_id, id, firstname, middlename, lastname, nickname, company, title, address, home, mobile, work, fax, email, email2, email3, homepage, facebookuid, aday, amonth, ayear, bday, bmonth, byear, address2, phone2, photo, notes, created, modified)
                         SELECT   $domain_id                                        domain_id
                                , ".$set_id."                                       id
                                , '".getIfSetFromAddr($addr_array, 'firstname')."'  firstname
@@ -89,6 +89,7 @@ function saveAddress($addr_array, $group_name = "") {
                                , '".getIfSetFromAddr($addr_array, 'email2')."'     email2
                                , '".getIfSetFromAddr($addr_array, 'email3')."'     email3
                                , '".getIfSetFromAddr($addr_array, 'homepage')."'   homepage
+                               , '".getIfSetFromAddr($addr_array, 'facebookuid')."'   facebookuid
                                , '".getIfSetFromAddr($addr_array, 'aday')."'       aday
                                , '".getIfSetFromAddr($addr_array, 'amonth')."'     amonth
                                , '".getIfSetFromAddr($addr_array, 'ayear')."'      ayear
@@ -165,6 +166,7 @@ function updateAddress($addr, $keep_photo = true) {
 	                            , email2    = '".$addr['email2']."'
 	                            , email3    = '".$addr['email3']."'
 	                            , homepage  = '".$addr['homepage']."'
+	                            , facebookuid  = '".$addr['facebookuid']."'
 	                            , aday      = '".$addr['aday']."'
 	                            , amonth    = '".$addr['amonth']."'
 	                            , ayear     = '".$addr['ayear']."'

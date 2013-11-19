@@ -48,7 +48,8 @@ echo "<div id='a-z'><a href='$link=a'>A</a> | <a href='$link=b'>B</a> | <a href=
 <?php
 
   $addresses = Addresses::withSearchString($searchstring, $alphabet);
-  $result = $addresses->getResults();
+ 
+  $result = $addresses->getResults(); 
 	$resultsnumber = mysql_numrows($result);
 	
 	// TBD:  Pagination
@@ -78,7 +79,30 @@ if(isset($table_groups) and $table_groups != "" and !$is_fix_group) { ?>
 			}
 		?>
 	</select>
+	
 </form>
+<form>
+<select name="fbgroup" onchange="this.parentNode.submit()">
+		<?php
+		
+			if($fbgroup != "") {
+				echo "<option>$fbgroup</option>\n";
+			}
+		?>
+		<option value="">[<?php echo msg("ALL"); ?>]</option>
+		<option value="[none]">[<?php echo msg("NONE"); ?>]</option>
+		<?php
+			$sql2="SELECT * FROM $table_fbgroups ORDER BY gid ASC";
+			$result_fbgroups = mysql_query($sql2);
+			$result_fbgropup_snumber = mysql_numrows($result_fbgroups);
+	
+			while ($myrow = mysql_fetch_array($result_fbgroups))
+			{
+			echo "<option>".$myrow["gid"]."</option>\n";
+			}
+		?>
+	</select>
+	</form>
 <?php } ?>
 <br /><br class="clear" />
 

@@ -80,6 +80,7 @@ if(! $read_only)
     $addr['email2']    = $email2;
     $addr['email3']    = $email3;
     $addr['homepage']  = $homepage;
+    $addr['facebookuid'] = $facebookuid;
     $addr['bday']      = $bday;
     $addr['bmonth']    = $bmonth;
     $addr['byear']     = $byear;
@@ -136,6 +137,7 @@ else if($update)
     $addr['email2']    = $email2;
     $addr['email3']    = $email3;
     $addr['homepage']  = $homepage;
+    $addr['facebookuid']  = $facebookuid;
     $addr['bday']      = $bday;
     $addr['bmonth']    = $bmonth;
     $addr['byear']     = $byear;
@@ -244,7 +246,11 @@ $myrow = mysql_fetch_array($result);
 
     <label><?php echo ucfmsg("HOMEPAGE") ?>:</label>
     <input type="text" name="homepage" size="35" value="<?php echo $myrow['homepage']?>" /><br />
-
+	
+	 <label><?php echo ucfmsg("Facebook UID (get it with http://findmyfacebookid.com/)") ?>:</label>
+    <input type="text" name="facebookuid"  value="<?php echo $myrow['facebookuid']?>" size="24" /><br />
+	</br></br>
+	
     <label><?php echo ucfmsg("BIRTHDAY") ?>:</label>
         <select name="bday">
       <option value="<?php echo $myrow['bday']?>" selected="selected"><?php echo ($myrow["bday"] == 0?"-":$myrow["bday"]) ?></option>
@@ -565,7 +571,11 @@ function proposeNames() {
 
     <label><?php echo ucfmsg("HOMEPAGE") ?>:</label>
     <input type="text" name="homepage"  value="<?php echoIfSet($addr, 'homepage'); ?>" size="35" /><br />
-
+	
+	 <label><?php echo ucfmsg("Facebook UID (get it with http://findmyfacebookid.com/)") ?>:</label>
+    <input type="text" name="facebookuid"  value="<?php echoIfSet($addr, 'homepage'); ?>" size="24" /><br />
+	</br></br>
+	
     <label><?php echo ucfmsg("BIRTHDAY") ?>:</label>
         <select name="bday">
             <option value="<?php echoIfSet($addr, 'bday'); ?>" selected="selected"><?php echoIfSet($addr, 'bday'); ?></option>
@@ -623,7 +633,7 @@ function proposeNames() {
         </select>
         <input class="byear" type="text" name="byear" size="4" maxlength="4" value="<?php echoIfSet($addr, 'byear'); ?>"/><br />
 
-    <label><?php echo ucfmsg("ANNIVERSARY") ?>:</label>
+    <label><?php echo ucfmsg("ANNIVERSARY") ?>:</label>dd
         <select name="aday">
                  <option value="<?php echoIfSet($addr, 'aday'); ?>" selected="selected"><?php echoIfSet($addr, 'aday'); ?></option>
           <option value="0">-</option>
