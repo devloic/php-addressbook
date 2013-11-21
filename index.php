@@ -96,7 +96,8 @@ if(isset($table_groups) and $table_groups != "" and !$is_fix_group) { ?>
 	      echo "<th class='sortable'>".ucfmsg(strtoupper($col))."</th>";
     	} elseif(in_array($col, array("home", "work", "mobile"))) {
 	      echo "<th>".ucfmsg("PHONE_".strtoupper($col))."</th>";
-	    } else {
+	    } 
+	    else{
         echo "<th></th>";
 	    	if($col == "edit" && !$read_only) { // row for edit
             echo "<th></th>";
@@ -155,6 +156,9 @@ function addRow($row) {
       case "last_first":
         echo "<td>".(!empty($middlename) ? $middlename." " : "")."$lastname $firstname</td>";
         break;
+        case "facebookusername":
+        	echo "<td>&nbsp;&nbsp;<a target='_blank' href='https://www.facebook.com/".$facebookusername."'>abrir facebook</a></td>";
+        	break;
       case "photo":
 //        echo "<td>".embeddedImg($photo)."</td>";
 ///*

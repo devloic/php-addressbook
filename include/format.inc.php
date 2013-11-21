@@ -4,7 +4,10 @@
 	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
 	<meta name="Description" content="PHP-Addressbook" />
 	<meta name="Keywords" content="" />
-
+	<link   href="css/bootstrap.min.css" rel="stylesheet">
+    <script src="js/jquery-1.10.2.min.js"></script>
+    <script src="js/bootstrap.min.js"></script>
+    
 	<style type="text/css">
 <?php
 /*
