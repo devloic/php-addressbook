@@ -71,7 +71,7 @@ function saveAddress($addr_array, $group_name = "") {
     	$src_tbl = $table;
     }
 
-    $sql = "INSERT INTO $table ( domain_id, id, firstname, middlename, lastname, nickname, company, title, address, home, mobile, work, fax, email, email2, email3, homepage, facebookusername ,aday, amonth, ayear, bday, bmonth, byear, address2, phone2, photo, notes, created, modified)
+    $sql = "INSERT INTO $table ( domain_id, id, firstname, middlename, lastname, nickname, company, title, address, home, mobile, work, fax, email, email2, email3, homepage, facebookusername ,aday, amonth, ayear, bday, bmonth, byear, address2, phone2, photo, notes, position_1, position_2, position_3, position_4 , position_5 , position_6  , position_7   , position_8 , position_9  , position_10  , position_11, position_12 , position_13 , position_14 , position_15 , created, modified)
                         SELECT   $domain_id                                        domain_id
                                , ".$set_id."                                       id
                                , '".getIfSetFromAddr($addr_array, 'firstname')."'  firstname
@@ -100,6 +100,21 @@ function saveAddress($addr_array, $group_name = "") {
                                , '".getIfSetFromAddr($addr_array, 'phone2')."'     phone2
                                , '".getIfSetFromAddr($addr_array, 'photo')."'      photo
                                , '".getIfSetFromAddr($addr_array, 'notes')."'      notes
+                               , '".getIfSetFromAddr($addr_array, 'position_1')."'      position_1
+                               , '".getIfSetFromAddr($addr_array, 'position_2')."'      position_2
+                               , '".getIfSetFromAddr($addr_array, 'position_3')."'      position_3
+                               , '".getIfSetFromAddr($addr_array, 'position_4')."'      position_4
+                               , '".getIfSetFromAddr($addr_array, 'position_5')."'      position_5
+                               , '".getIfSetFromAddr($addr_array, 'position_6')."'      position_6
+                               , '".getIfSetFromAddr($addr_array, 'position_7')."'      position_7
+                               , '".getIfSetFromAddr($addr_array, 'position_8')."'      position_8
+                               , '".getIfSetFromAddr($addr_array, 'position_9')."'      position_9
+                               , '".getIfSetFromAddr($addr_array, 'position_10')."'      position_10
+                               , '".getIfSetFromAddr($addr_array, 'position_11')."'      position_11
+                               , '".getIfSetFromAddr($addr_array, 'position_12')."'      position_12
+                               , '".getIfSetFromAddr($addr_array, 'position_13')."'      position_13
+                               , '".getIfSetFromAddr($addr_array, 'position_14')."'      position_14
+                               , '".getIfSetFromAddr($addr_array, 'position_15')."'      position_15
                                , now(), now()
                             FROM ".$src_tbl;
     $result = mysql_query($sql);
@@ -166,6 +181,7 @@ function updateAddress($addr, $keep_photo = true) {
 	                            , email2    = '".$addr['email2']."'
 	                            , email3    = '".$addr['email3']."'
 	                            , homepage  = '".$addr['homepage']."'
+	                            , facebookusername  = '".$addr['facebookusername']."'
 	                            , aday      = '".$addr['aday']."'
 	                            , amonth    = '".$addr['amonth']."'
 	                            , ayear     = '".$addr['ayear']."'
@@ -175,6 +191,21 @@ function updateAddress($addr, $keep_photo = true) {
 	                            , address2  = '".$addr['address2']."'
 	                            , phone2    = '".$addr['phone2']."'
 	                            , notes     = '".$addr['notes']."'
+	                            , position_1     = '".$addr['position_1']."'
+								, position_2     = '".$addr['position_2']."'
+								, position_3     = '".$addr['position_3']."'
+								, position_4     = '".$addr['position_4']."'
+								, position_5     = '".$addr['position_5']."'
+								, position_6     = '".$addr['position_6']."'
+								, position_7     = '".$addr['position_7']."'
+								, position_8     = '".$addr['position_8']."'
+								, position_9     = '".$addr['position_9']."'
+								, position_10     = '".$addr['position_10']."'
+								, position_11     = '".$addr['position_11']."'
+								, position_12     = '".$addr['position_12']."'
+								, position_13     = '".$addr['position_13']."'
+								, position_14     = '".$addr['position_14']."'
+								, position_15     = '".$addr['position_15']."'		
 	    ".($keep_photo ? "" : ", photo     = '".$addr['photo']."'")."
 	                            , modified  = now()
 		                        WHERE id        = '".$addr['id']."'
