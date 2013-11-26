@@ -304,9 +304,9 @@ if ($submit) {
 	<div class="btn-group" data-toggle="buttons-checkbox">
 	  <button type="button" class="btn btn-primary position" id="bposition_6">6 Tercera linea ala</button>
 	  <input type="hidden" name="position_6" id="position_6" value="<?php echo $myrow['position_6']; ?>">
-	  <button type="button" class="btn btn-primary position" id="bposition_8" >8 Segunda linea</button>
+	  <button type="button" class="btn btn-primary position" id="bposition_8" >8 Tercera linea</button>
 	  <input type="hidden" name="position_8" id="position_8" value="<?php echo $myrow['position_8']; ?>">
-	  <button type="button" class="btn btn-primary position" id="position_7">7 Segunda linea ala</button>
+	  <button type="button" class="btn btn-primary position" id="position_7">7 Tercera linea ala</button>
 	  <input type="hidden" name="position_7" id="position_7" value="<?php echo $myrow['position_7']; ?>">
 	 </div>
 	 <br/><br/>
@@ -824,9 +824,9 @@ function proposeNames() {
 	<div class="btn-group" data-toggle="buttons-checkbox">
 	  <button type="button" class="btn btn-primary position" id="bposition_6">6 Tercera linea ala</button>
 	  <input type="hidden" name="position_6" id="position_6" value="<?php echoIfSet($addr, 'position_6'); ?>">
-	  <button type="button" class="btn btn-primary position" id="bposition_8" >8 Segunda linea</button>
+	  <button type="button" class="btn btn-primary position" id="bposition_8" >8 Tercera linea</button>
 	  <input type="hidden" name="position_8" id="position_8" value="<?php echoIfSet($addr, 'position_8'); ?>">
-	  <button type="button" class="btn btn-primary position" id="position_7">7 Segunda linea ala</button>
+	  <button type="button" class="btn btn-primary position" id="position_7">7 Tercera linea ala</button>
 	  <input type="hidden" name="position_7" id="position_7" value="<?php echoIfSet($addr, 'position_7'); ?>">
 	 </div>
 	 <br/><br/>
