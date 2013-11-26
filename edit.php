@@ -10,6 +10,7 @@ if ($submit || $update) {
 
 }
 
+
 $resultsnumber = 0;
 if ($id) {
 	
@@ -107,6 +108,22 @@ if ($submit) {
 		$addr ['address2'] = $address2;
 		$addr ['phone2'] = $phone2;
 		$addr ['notes'] = $notes;
+		$addr ['position_1'] = $position_1;
+		$addr ['position_2'] = $position_2;
+		$addr ['position_3'] = $position_3;
+		$addr ['position_4'] = $position_4;
+		$addr ['position_5'] = $position_5;
+		$addr ['position_6'] = $position_6;
+		$addr ['position_7'] = $position_7;
+		$addr ['position_8'] = $position_8;
+		$addr ['position_9'] = $position_9;
+		$addr ['position_10'] = $position_10;
+		$addr ['position_11'] = $position_11;
+		$addr ['position_12'] = $position_12;
+		$addr ['position_13'] = $position_13;
+		$addr ['position_14'] = $position_14;
+		$addr ['position_15'] = $position_15;
+		
 		
 		if (isset ( $_FILES ["photo"] ) && $_FILES ["photo"] ["error"] <= 0) {
 			
@@ -158,6 +175,21 @@ if ($submit) {
 		$addr ['address2'] = $address2;
 		$addr ['phone2'] = $phone2;
 		$addr ['notes'] = $notes;
+		$addr ['position_1'] = $position_1;
+		$addr ['position_2'] = $position_2;
+		$addr ['position_3'] = $position_3;
+		$addr ['position_4'] = $position_4;
+		$addr ['position_5'] = $position_5;
+		$addr ['position_6'] = $position_6;
+		$addr ['position_7'] = $position_7;
+		$addr ['position_8'] = $position_8;
+		$addr ['position_9'] = $position_9;
+		$addr ['position_10'] = $position_10;
+		$addr ['position_11'] = $position_11;
+		$addr ['position_12'] = $position_12;
+		$addr ['position_13'] = $position_13;
+		$addr ['position_14'] = $position_14;
+		$addr ['position_15'] = $position_15;
 		
 		$keep_photo = true;
 		if (isset ( $delete_photo )) {
@@ -191,10 +223,10 @@ if ($submit) {
 		?>
 
 <form class="form-horizontal" enctype="multipart/form-data"
-	accept-charset="utf-8" method="post"
+	accept-charset="utf-8" method="post" id="user_form"
 	action="edit<?php echo $page_ext; ?>">
 
-	<button class="btn btn-success" type="submit" name="update"
+	<button class="btn btn-success" type="submit" class="update" name="update"
 		value="<?php echo ucfmsg('UPDATE') ?>"><?php echo ucfmsg('UPDATE') ?></button>
 	<input type="hidden" name="id"
 		value="<?php echo isset($myrow['id']) ? $myrow['id'] : ''; ?>" />
@@ -251,6 +283,57 @@ if ($submit) {
 
 		</div>
 	</div>
+	
+	<div class="btn-group" data-toggle="buttons-checkbox">
+	  <button type="button" class="btn btn-primary position" id="bposition_1">1 Pilar</button>
+	  <input type="hidden" name="position_1" id="position_1" value="<?php echo $myrow['position_1']; ?>">
+	  
+	  <button type="button" class="btn btn-primary position" id="bposition_2">2 Hooker</button>
+	  <input type="hidden" name="position_2" id="position_2" value="<?php echo $myrow['position_2']; ?>">
+	  <button type="button" class="btn btn-primary position" id="bposition_3">3 Pilar</button>
+	  <input type="hidden" name="position_3" id="position_3" value="<?php echo $myrow['position_3']; ?>">
+	</div>
+	<br/>
+	<div class="btn-group" data-toggle="buttons-checkbox">
+	  <button type="button" class="btn btn-primary position" id="bposition_4">4 Segunda linea</button>
+	  <input type="hidden" name="position_4" id="position_4" value="<?php echo $myrow['position_4']; ?>">
+	  <button type="button" class="btn btn-primary position" id="bposition_5">5 Segunda linea</button>
+	  <input type="hidden" name="position_5" id="position_5" value="<?php echo $myrow['position_5']; ?>">
+	 </div>
+	<br/>
+	<div class="btn-group" data-toggle="buttons-checkbox">
+	  <button type="button" class="btn btn-primary position" id="bposition_6">6 Tercera linea ala</button>
+	  <input type="hidden" name="position_6" id="position_6" value="<?php echo $myrow['position_6']; ?>">
+	  <button type="button" class="btn btn-primary position" id="bposition_8" >8 Segunda linea</button>
+	  <input type="hidden" name="position_8" id="position_8" value="<?php echo $myrow['position_8']; ?>">
+	  <button type="button" class="btn btn-primary position" id="position_7">7 Segunda linea ala</button>
+	  <input type="hidden" name="position_7" id="position_7" value="<?php echo $myrow['position_7']; ?>">
+	 </div>
+	 <br/><br/>
+	<div class="btn-group" data-toggle="buttons-checkbox">
+	  <button type="button" class="btn btn-primary position" id="bposition_9">9 Medio scrum</button>
+	  <input type="hidden" name="position_9" id="position_9" value="<?php echo $myrow['position_9']; ?>">
+	 </div>
+	 <br/><br/>
+	 <div class="btn-group" data-toggle="buttons-checkbox"  style="left:100px">
+	  <button type="button" class="btn btn-primary position" id="bposition_10">10 Apertura</button>
+	  <input type="hidden" name="position_10" id="position_10" value="<?php echo $myrow['position_10']; ?>">
+	  <button type="button" class="btn btn-primary position" id="bposition_12" >12 Primer centro</button>
+	  <input type="hidden" name="position_12" id="position_12" value="<?php echo $myrow['position_12']; ?>">
+	  <button type="button" class="btn btn-primary position" id="bposition_13" >13 Segundo centro</button>
+	  <input type="hidden" name="position_13" id="position_13" value="<?php echo $myrow['position_13']; ?>">
+	 </div>
+	 <br/><br/><br/>
+	 <div class="btn-group" data-toggle="buttons-checkbox" style="left:50px">
+	  <button type="button" class="btn btn-primary position" id="bposition_11">11 Wing izquierdo</button>
+	  <input type="hidden" name="position_11" id="position_11" value="<?php echo $myrow['position_11']; ?>">
+	  <button type="button" class="btn btn-primary position" id="bposition_15" >15 Fullback</button>
+	  <input type="hidden" name="position_15" id="position_15" value="<?php echo $myrow['position_15']; ?>">
+	  <button type="button" class="btn btn-primary position" id="bposition_14">14 Wing derecho</button>
+	  <input type="hidden" name="position_14" id="position_14" value="<?php echo $myrow['position_14']; ?>">
+	 </div>
+	 <br/><br/><br/>
+	 
 	<div class="control-group">
 		<label class="control-label"><?php echo ucfmsg("COMPANY") ?>:</label>
 		<div class="controls">
@@ -267,6 +350,9 @@ if ($submit) {
 
 		</div>
 	</div>
+	
+	
+	
 	<div class="control-group">
 		<label class="control-label"><?php echo ucfmsg("ADDRESS") ?>:</label>
 		<div class="controls">
@@ -521,6 +607,29 @@ if ($submit) {
 				value="<?php echo ucfmsg('UPDATE') ?>"><?php echo ucfmsg('UPDATE') ?></button><br/><br/><br/>
 
 </form>
+
+<script type="text/javascript">
+		
+for (i = 1 ;i<=15;i++){
+	if ($('#position_'+i).val() == '1'){
+		$('#bposition_'+i).addClass('active');
+	}
+}
+
+$('.position').on('click',function(e) {
+	var index=$(this).attr('id').replace('bposition_','');
+	
+	if ($( this ).hasClass('active') ){
+		$('#position_'+index).val("0");
+		}else{
+			$('#position_'+index).val("1");
+		}
+});
+
+
+</script>
+
+
 <form method="get" action="delete<?php echo $page_ext; ?>">
 	<input type="hidden" name="id" value="<?php echo $myrow['id']?>" />
 	<button class="btn btn-danger" type="submit" name="update"
@@ -533,23 +642,22 @@ if ($submit) {
 } else if (! (isset ( $_POST ['quickskip'] ) || isset ( $_POST ['quickadd'] )) && (isset ( $_GET ['quickadd'] ) || isset ( $_POST ['quickadd'] ) || $quickadd)) {
 	?>
 <form accept-charset="utf-8" method="post" name="quickadd">
-	<input type="submit" name="quickadd"
-		value="<?php echo ucfmsg('NEXT') ?>" />
 	
+	<button class="btn btn-success" type="submit" name="quickadd"
+		value="<?php echo ucfmsg('NEXT') ?>"><?php echo ucfmsg('NEXT') ?></button>
 
-	</div>
-	</div>
-	<div class="control-group">
-		<label class="control-label"><?php echo ucfmsg("ADDRESS") ?>:</label>
-		<div class="controls">
+	<br/><br/>
+	
+			<label class="control-label"><?php echo ucfmsg("ADDRESS") ?>:</label>
 			<textarea name="address" rows="20" tabindex="0"></textarea>
+		<br/>	<br/>
 			
-			<input type="submit" name="quickadd"
-				value="<?php echo ucfmsg('NEXT') ?>" />
-
+		<button class="btn btn-success" type="submit" name="quickadd" value="<?php echo ucfmsg('NEXT') ?>"><?php echo ucfmsg('NEXT') ?></button>
+		
 </form>
 <script type="text/javascript">
 	  document.quickadd.address.focus();
+	 
   </script>
 
 <?php
@@ -642,16 +750,16 @@ function proposeNames() {
 -->
 </script>
 
+
 <form name="theform" enctype="multipart/form-data"
 	accept-charset="utf-8" method="post"
 	action="edit<?php echo $page_ext; ?>">
 
-	<input type="submit" name="submit"
-		value="<?php echo ucfmsg('ENTER') ?>" />
+	
+	<button class="btn btn-success" type="submit" name="submit" value="<?php echo ucfmsg('ENTER') ?>"><?php echo ucfmsg('ENTER') ?></button>
 	<input type="hidden" name="id"
 		value="<?php echo echoIfSet($addr, 'id'); ?>" />
-	</div>
-	</div>
+	<br/><br/>
 	<div class="control-group">
 		<label class="control-label"><?php echo ucfmsg("FIRSTNAME") ?>:</label>
 		<div class="controls">
@@ -696,7 +804,55 @@ function proposeNames() {
 </div>
 	
 
-	
+	<div class="btn-group" data-toggle="buttons-checkbox">
+	  <button type="button" class="btn btn-primary position" id="bposition_1">1 Pilar</button>
+	  <input type="hidden" name="position_1" id="position_1" value="<?php echoIfSet($addr, 'position_1'); ?>">
+	  
+	  <button type="button" class="btn btn-primary position" id="bposition_2">2 Hooker</button>
+	  <input type="hidden" name="position_2" id="position_2" value="<?php echoIfSet($addr, 'position_2'); ?>">
+	  <button type="button" class="btn btn-primary position" id="bposition_3">3 Pilar</button>
+	  <input type="hidden" name="position_3" id="position_3" value="<?php echoIfSet($addr, 'position_3'); ?>">
+	</div>
+	<br/>
+	<div class="btn-group" data-toggle="buttons-checkbox">
+	  <button type="button" class="btn btn-primary position" id="bposition_4">4 Segunda linea</button>
+	  <input type="hidden" name="position_4" id="position_4" value="<?php echoIfSet($addr, 'position_4'); ?>">
+	  <button type="button" class="btn btn-primary position" id="bposition_5">5 Segunda linea</button>
+	  <input type="hidden" name="position_5" id="position_5" value="<?php echoIfSet($addr, 'position_5'); ?>">
+	 </div>
+	<br/>
+	<div class="btn-group" data-toggle="buttons-checkbox">
+	  <button type="button" class="btn btn-primary position" id="bposition_6">6 Tercera linea ala</button>
+	  <input type="hidden" name="position_6" id="position_6" value="<?php echoIfSet($addr, 'position_6'); ?>">
+	  <button type="button" class="btn btn-primary position" id="bposition_8" >8 Segunda linea</button>
+	  <input type="hidden" name="position_8" id="position_8" value="<?php echoIfSet($addr, 'position_8'); ?>">
+	  <button type="button" class="btn btn-primary position" id="position_7">7 Segunda linea ala</button>
+	  <input type="hidden" name="position_7" id="position_7" value="<?php echoIfSet($addr, 'position_7'); ?>">
+	 </div>
+	 <br/><br/>
+	<div class="btn-group" data-toggle="buttons-checkbox">
+	  <button type="button" class="btn btn-primary position" id="bposition_9">9 Medio scrum</button>
+	  <input type="hidden" name="position_9" id="position_9" value="<?php echoIfSet($addr, 'position_9'); ?>">
+	 </div>
+	 <br/><br/>
+	 <div class="btn-group" data-toggle="buttons-checkbox"  style="left:100px">
+	  <button type="button" class="btn btn-primary position" id="bposition_10">10 Apertura</button>
+	  <input type="hidden" name="position_10" id="position_10" value="<?php echoIfSet($addr, 'position_10'); ?>">
+	  <button type="button" class="btn btn-primary position" id="bposition_12" >12 Primer centro</button>
+	  <input type="hidden" name="position_12" id="position_12" value="<?php echoIfSet($addr, 'position_12'); ?>">
+	  <button type="button" class="btn btn-primary position" id="bposition_13" >13 Segundo centro</button>
+	  <input type="hidden" name="position_13" id="position_13" value="<?php echoIfSet($addr, 'position_13'); ?>">
+	 </div>
+	 <br/><br/><br/>
+	 <div class="btn-group" data-toggle="buttons-checkbox" style="left:50px">
+	  <button type="button" class="btn btn-primary position" id="bposition_11">11 Wing izquierdo</button>
+	  <input type="hidden" name="position_11" id="position_11" value="<?php echoIfSet($addr, 'position_11'); ?>">
+	  <button type="button" class="btn btn-primary position" id="bposition_15" >15 Fullback</button>
+	  <input type="hidden" name="position_15" id="position_15" value="<?php echoIfSet($addr, 'position_15'); ?>">
+	  <button type="button" class="btn btn-primary position" id="bposition_14">14 Wing derecho</button>
+	  <input type="hidden" name="position_14" id="position_14" value="<?php echoIfSet($addr, 'position_14'); ?>">
+	 </div>
+	 <br/><br/><br/>
 	
 	<div class="control-group">
 		<label class="control-label"><?php echo ucfmsg("TITLE") ?>:</label>
@@ -787,7 +943,7 @@ function proposeNames() {
 				value="<?php echoIfSet($addr, 'email2'); ?>" size="35" />
 
 		</div>
-	</div>
+	</div><br/>
 	<div class="control-group">
 		<label class="control-label"><?php echo ucfmsg("EMAIL") ?>3:</label>
 		<div class="controls">
@@ -795,7 +951,7 @@ function proposeNames() {
 				value="<?php echoIfSet($addr, 'email3'); ?>" size="35" />
 
 		</div>
-	</div>
+	</div><br/>
 	<div class="control-group">
 		<label class="control-label"><?php echo ucfmsg("HOMEPAGE") ?>:</label>
 		<div class="controls">
@@ -991,16 +1147,37 @@ function proposeNames() {
 		<div class="controls">
 			<input type="text" name="phone2"
 				value="<?php echoIfSet($addr, 'phone2'); ?>" size="35" />
-
+		</div>
+	</div>
+	
 			<div class="control-group">
 				<label class="control-label"><?php echo ucfmsg("NOTES") ?>:</label>
 				<div class="controls">
 					<textarea name="notes" rows="5" cols="35"></textarea>
+					<br/><br/>
 					
-					<input type="submit" name="submit"
-						value="<?php echo ucfmsg('ENTER') ?>" />
-
+					<button class="btn btn-success" type="submit" name="submit" value="<?php echo ucfmsg('ENTER') ?>"><?php echo ucfmsg('ENTER') ?></button>
+				</div>
+			</div>
 </form>
+<script type="text/javascript">
+for (i = 1 ;i<=15;i++){
+	if ($('#position_'+i).val() == '1'){
+		$('#bposition_'+i).addClass('active');
+	}
+}
+$('.position').on('click',function(e) {
+	var index=$(this).attr('id').replace('bposition_','');
+	
+	if ($( this ).hasClass('active') ){
+		$('#position_'+index).val("0");
+		}else{
+			$('#position_'+index).val("1");
+		}
+});
+
+
+</script>
 <script type="text/javascript">
     document.theform.email.focus();
   </script>
