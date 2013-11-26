@@ -3372,7 +3372,7 @@ input[type="button"].btn-block {
 .btn-primary.disabled,
 .btn-primary[disabled] {
   color: #ffffff;
-  background-color: #0044cc;
+  background-color: #FF4000;
   *background-color: #003bb3;
 }
 
