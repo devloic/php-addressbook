@@ -79,6 +79,9 @@ msgstr ""
 msgid "HOME"
 msgstr ""
 
+msgid "FACEBOOKUSERNAME"
+msgstr ""
+
 msgid "NEXT_BIRTHDAYS"
 msgstr ""
 
