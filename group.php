@@ -203,7 +203,8 @@ else if($edit || $id)
 
 		<label><?php echo ucfmsg('GROUP_FOOTER'); ?>:</label>
 		<textarea name="group_footer" rows="10" cols="40"><?php echo $myrow["group_footer"]?></textarea><br /><br />
-		<input type="submit" name="update" value="<?php echo ucfmsg('UPDATE'); ?>" />
+		<button class='btn btn-success' name='update' type='submit'   value="<?php  echo ucfmsg("UPDATE"); ?>"><?php echo ucfmsg('UPDATE'); ?></button>
+		
 	</form>
     <br />
   <?php
@@ -216,9 +217,10 @@ else
 
 ?>
 <form method="post" action="<?php echo $_SERVER['PHP_SELF'];?>">
-  <input type="submit" name="new" value="<?php echo ucfmsg('NEW_GROUP'); ?>" />
-	<input type="submit" name="delete" value="<?php echo ucfmsg('DELETE_GROUPS'); ?>" />
-	<input type="submit" name="edit" value="<?php echo ucfmsg('EDIT_GROUP'); ?>" />
+<button class='btn btn-success' name='new' type='submit'   value="<?php  echo ucfmsg("NEW_GROUP"); ?>"><?php echo ucfmsg('NEW_GROUP'); ?></button>
+<button class='btn btn-success' name='delete' type='submit'   value="<?php  echo ucfmsg("DELETE_GROUPS"); ?>"><?php echo ucfmsg('DELETE_GROUPS'); ?></button>
+<button class='btn btn-success' name='edit' type='submit'   value="<?php  echo ucfmsg("EDIT_GROUP"); ?>"><?php echo ucfmsg('EDIT_GROUP'); ?></button>
+  
 
 <hr />
 
@@ -233,9 +235,10 @@ else
 	}	
 ?>
 <br />
-  <input type="submit" name="new" value="<?php echo ucfmsg('NEW_GROUP'); ?>" />
-	<input type="submit" name="delete" value="<?php echo ucfmsg('DELETE_GROUPS'); ?>" />
-	<input type="submit" name="edit" value="<?php echo ucfmsg('EDIT_GROUP'); ?>" />
+  <button class='btn btn-success' name='new' type='submit'   value="<?php  echo ucfmsg("NEW_GROUP"); ?>"><?php echo ucfmsg('NEW_GROUP'); ?></button>
+<button class='btn btn-success' name='delete' type='submit'   value="<?php  echo ucfmsg("DELETE_GROUPS"); ?>"><?php echo ucfmsg('DELETE_GROUPS'); ?></button>
+<button class='btn btn-success' name='edit' type='submit'   value="<?php  echo ucfmsg("EDIT_GROUP"); ?>"><?php echo ucfmsg('EDIT_GROUP'); ?></button>
+
 </form>
 <?php 
 }
