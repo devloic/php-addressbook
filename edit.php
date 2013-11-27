@@ -333,7 +333,8 @@ if ($submit) {
 	  <input type="hidden" name="position_14" id="position_14" value="<?php echo $myrow['position_14']; ?>">
 	 </div>
 	 <br/><br/><br/>
-	 
+	
+	<!--
 	<div class="control-group">
 		<label class="control-label"><?php echo ucfmsg("COMPANY") ?>:</label>
 		<div class="controls">
@@ -342,6 +343,9 @@ if ($submit) {
 
 		</div>
 	</div>
+	-->
+	<input type="hidden" name="company" value="" />
+	
 	<div class="control-group">
 		<label class="control-label"><?php echo ucfmsg("TITLE") ?>:</label>
 		<div class="controls">
@@ -799,11 +803,12 @@ function proposeNames() {
 	
 	<div class="fileupload fileupload-new" data-provides="fileupload">
   <div class="input-append">
+  <label class="control-label"><?php echo ucfmsg("PHOTO") ?>:</label>
     <div class="uneditable-input span3"><i class="icon-file fileupload-exists"></i> <span class="fileupload-preview"></span></div><span class="btn btn-file"><span class="fileupload-new">Select Image</span><span class="fileupload-exists">Change</span><input type="file" name="photo" /></span><a href="#" class="btn fileupload-exists" data-dismiss="fileupload">Remove</a>
   </div>
 </div>
 	
-
+	<label class="control-label"><?php echo ucfmsg("POSITION") ?>:</label><br/><br/>
 	<div class="btn-group" data-toggle="buttons-checkbox">
 	  <button type="button" class="btn btn-primary position" id="bposition_1">1 Pilar</button>
 	  <input type="hidden" name="position_1" id="position_1" value="<?php echoIfSet($addr, 'position_1'); ?>">
@@ -862,6 +867,7 @@ function proposeNames() {
 
 		</div>
 	</div>
+	<!--
 	<div class="control-group">
 		<label class="control-label"><?php echo ucfmsg("COMPANY") ?>:</label>
 		<div class="controls">
@@ -871,6 +877,9 @@ function proposeNames() {
 
 		</div>
 	</div>
+	  -->
+	<input type="hidden" name="company" value="" />
+	
 	<div class="control-group">
 		<label class="control-label"><?php echo ucfmsg("ADDRESS") ?>:</label>
 		<div class="controls">
@@ -1179,7 +1188,8 @@ $('.position').on('click',function(e) {
 
 </script>
 <script type="text/javascript">
-    document.theform.email.focus();
+
+    document.theform.firstname.focus();
   </script>
 <?php
 	} else
