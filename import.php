@@ -19,10 +19,16 @@ function getIfSet($ldif_record, $key) {
 if(!$submit) {
 ?>
 <form method="post" enctype="multipart/form-data">
-  <label size=50 for="file">LDIF/VCF/CSV/XLS:</label>
-  <input size=40 type="file" name="file" id="file" /><br/>
+  <div class="fileupload fileupload-new" data-provides="fileupload">
+	  <div class="input-append">
+	  <label class="control-label" size=50 for="file">LDIF/VCF/CSV/XLS:</label>
+	    <div class="uneditable-input span3"><i class="icon-file fileupload-exists"></i> <span class="fileupload-preview"></span></div><span class="btn btn-file"><span class="fileupload-new">Select File</span><span class="fileupload-exists">Change</span><input type="file" id="file" size=40 name="file" /></span><a href="#" class="btn fileupload-exists" data-dismiss="fileupload">Remove</a>
+	  </div>
+  </div>
+<br/>
   <input type="hidden" name="del_format" value="phpaddr">
-  <input type="submit" name="submit" value="Submit" />
+  <button class='btn btn-success' name='submit' type='submit'   value="Submit">Submit</button>
+  
 </form>
 <br><br>
 <i>Sample (.csv, .xls): <a href="import_sample.csv">import_sample.csv</a></i>

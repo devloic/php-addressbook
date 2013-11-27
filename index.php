@@ -269,9 +269,10 @@ function addRow($row) {
 	if($use_doodle) {
     echo "<div class='left'><input type='button' value=\"".ucfmsg("DOODLE")."\"   onclick=\"Doodle()\" /></div>";
   }
-  echo "<div class='left'><input type='button' value=\"".ucfmsg("SEND_EMAIL")."\" onclick=\"MailSelection()\" /></div>";
+  echo "<div class='left'><button class='btn btn-success' type='button' onclick=\"MailSelection()\"  value=\"".ucfmsg("SEND_EMAIL")."\">".ucfmsg('SEND_EMAIL')."</button></div>";
   if(! $read_only) {
-    echo "<div class='left'><input type='button' value=\"".ucfmsg("DELETE")."\"     onclick=\"DeleteSel()\" /></div>";
+    echo "<div class='left'><button class='btn btn-success' type='button' onclick=\"DeleteSel()\"  value=\"".ucfmsg("DELETE")."\">".ucfmsg('DELETE')."</button></div>";
+        		
     
 	  if(isset($table_groups) and $table_groups != "" and !$is_fix_group)
 	  {
@@ -284,7 +285,7 @@ function addRow($row) {
 	          	echo "<div></div>";
     
 	  	// -- Add to a group --
-      echo "<div class='right'><input type='submit' name='add' value='".ucfmsg("ADD_TO")."'/>-";
+      echo "<div class='right'><button class='btn btn-success' name='add' type='submit'   value=\"".ucfmsg("ADD_TO")."\">".ucfmsg('ADD_TO')."</button>-";
       echo "<select name='to_group'>";
     
 	  	$sql="SELECT group_name FROM $groups_from_where ORDER BY lower(group_name) ASC";
