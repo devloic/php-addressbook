@@ -280,7 +280,7 @@ function addRow($row) {
 	  	// -- Remove from group --
 	  	if($group_name != "" and $group_name != "[none]") 
 	  	{
-	          	echo "<div class='left'><input type='submit' name='remove' value='".ucfmsg("REMOVE_FROM")." \"$group_name\"'/></div>";
+	          	echo "<div class='left'><button class='btn btn-danger' type='submit' name='remove' value='".ucfmsg("REMOVE_FROM")." .$group_name.'>".ucfmsg("REMOVE_FROM")." $group_name"."</button></div>";
 	  	} else
 	          	echo "<div></div>";
     
