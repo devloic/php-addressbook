@@ -961,7 +961,7 @@ function proposeNames() {
 		</div>
 	</div>
 	<div class="control-group">
-		<label class="control-label"><?php echo ucfmsg("Facebook username"); ?>:</label>
+		<label class="control-label"><?php echo ucfmsg("FACEBOOKUSERNAME"); ?>:</label>
 		<div class="controls">
 			<input type="text" name="facebookusername"
 				value="<?php echoIfSet($addr, 'facebookusername'); ?>" size="24" />
