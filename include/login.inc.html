@@ -6,9 +6,16 @@
   			<div id="nav"></div>
   			<div id="content">
   	      <form accept-charset="utf-8" id="LoginForm" name="LoginForm" method="post">
-  	         <label><?= ucfmsg('USER'); ?>:</echo></label><input name="user" tabindex="0"/><br/>
+  	         </label><div class="control-group">
+		<label class="control-label"><?php echo ucfmsg("USER") ?>:</label>
+		<div class="controls">
+			<input type="text" name="user" tabindex="0"/>
+
+		</div>
+	</div><br/>
   	         <label><?= ucfmsg('PASSWORD'); ?>:</label><input name="pass" type="password"/><br/>
-  	         <input type=submit value="<?= ucfmsg('LOGIN'); ?>"/><br><br>
+  	         <button class="btn btn-success" type="submit" 
+				value="<?php echo ucfmsg('LOGIN') ?>"><?php echo ucfmsg('LOGIN') ?></button><br><br>
           </form>
   <script type="text/javascript">
     document.LoginForm.user.focus();
