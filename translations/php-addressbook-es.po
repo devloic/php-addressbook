@@ -5,17 +5,17 @@
 #
 msgid ""
 msgstr ""
-"Project-Id-Version: PACKAGE VERSION\n"
+"Project-Id-Version: php-addressbook\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2012-10-25 14:49+0200\n"
-"PO-Revision-Date: 2012-10-27 11:48+0000\n"
-"Last-Translator: chatelao <Unknown>\n"
-"Language-Team: LANGUAGE <LL@li.org>\n"
+"PO-Revision-Date: 2013-11-27 11:02-0400\n"
+"Last-Translator: loic devaux <loicdevaux@hotmail.com>\n"
+"Language-Team:  <loicdevaux@hotmail.com>\n"
 "MIME-Version: 1.0\n"
-"Content-Type: text/plain; charset=utf-8\n"
+"Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "X-Launchpad-Export-Date: 2012-11-05 07:28+0000\n"
-"X-Generator: Launchpad (build 16232)\n"
+"X-Generator: Poedit 1.5.7\n"
 
 msgid "LANGUAGE"
 msgstr "idioma"
@@ -83,6 +83,9 @@ msgstr "búsqueda"
 msgid "HOME"
 msgstr "inicio"
 
+msgid "FACEBOOKUSERNAME"
+msgstr "Usuario Facebook"
+
 msgid "NEXT_BIRTHDAYS"
 msgstr "cumpleaños"
 
@@ -105,10 +108,10 @@ msgid "IMPORT"
 msgstr "importación"
 
 msgid "MAP"
-msgstr ""
+msgstr "Mapa"
 
 msgid "MORE"
-msgstr ""
+msgstr "Mas"
 
 msgid "GROUP"
 msgstr "grupo"
@@ -195,7 +198,7 @@ msgid "FIRSTNAME"
 msgstr "Nombre"
 
 msgid "MIDDLENAME"
-msgstr ""
+msgstr "Segundo Nombre"
 
 msgid "LASTNAME"
 msgstr "apellido"
@@ -204,7 +207,7 @@ msgid "NAME_SUFFIX"
 msgstr ""
 
 msgid "NICKNAME"
-msgstr ""
+msgstr "Apodo"
 
 msgid "COMPANY"
 msgstr "compañía"
@@ -213,10 +216,10 @@ msgid "DEPT"
 msgstr ""
 
 msgid "OCCUPATION"
-msgstr ""
+msgstr "Profesión"
 
 msgid "TITLES"
-msgstr ""
+msgstr "Título"
 
 msgid "ADDRESS"
 msgstr "dirección"
@@ -228,13 +231,13 @@ msgid "APT"
 msgstr ""
 
 msgid "STREET"
-msgstr ""
+msgstr "Calle"
 
 msgid "STATE"
 msgstr ""
 
 msgid "COUNTRY"
-msgstr ""
+msgstr "País"
 
 msgid "TELEPHONE"
 msgstr "teléfono"
@@ -330,13 +333,58 @@ msgid "SECONDARY"
 msgstr "Contacto Secundario"
 
 msgid "CREATE_ACCOUNT"
-msgstr ""
+msgstr "Crear cuenta"
 
 msgid "FORGOT_PASSWORD"
+msgstr "Contraseña olvidada"
+
+msgid "UPDATED"
+msgstr "Actualizado"
+
+msgid "TRANSLATOR"
+msgstr "Traductor"
+
+msgid "TITLE"
+msgstr "Título"
+
+msgid "MOBILE"
+msgstr "Celular"
+
+msgid "WORK"
+msgstr "Trabajo"
+
+msgid "FIRST_LAST"
+msgstr ""
+
+msgid "NEXT"
+msgstr "Siguiente"
+
+msgid "PHOTO"
+msgstr "Foto"
+
+msgid "ALL_PHONES"
+msgstr "Telefonos"
+
+msgid "ALL_EMAILS"
+msgstr "Correos"
+
+msgid "SIGN_IN_WITH"
+msgstr ""
+
+msgid "LAST_FIRST"
+msgstr ""
+
+msgid "GRP_NAME"
+msgstr "Nombre del grupo"
+
+msgid "ab"
 msgstr ""
 
 msgid "ar"
 msgstr "Árabe"
+
+msgid "be"
+msgstr ""
 
 msgid "bg"
 msgstr "Búlgaro"
@@ -392,6 +440,9 @@ msgstr "Coreano"
 msgid "nl"
 msgstr "Holandés"
 
+msgid "no"
+msgstr ""
+
 msgid "pl"
 msgstr "Polaco"
 
@@ -403,6 +454,9 @@ msgstr "Retorrománico"
 
 msgid "ru"
 msgstr "Ruso"
+
+msgid "sk"
+msgstr ""
 
 msgid "sl"
 msgstr "Esloveno"
@@ -419,53 +473,11 @@ msgstr "Tailandés"
 msgid "tr"
 msgstr "Turco"
 
+msgid "ua"
+msgstr ""
+
 msgid "vi"
 msgstr "Vietnamita"
 
 msgid "zh"
 msgstr "Chino"
-
-msgid "DIR"
-msgstr ""
-
-msgid "UPDATED"
-msgstr "Actualizado"
-
-msgid "TRANSLATOR"
-msgstr ""
-
-msgid "TITLE"
-msgstr ""
-
-msgid "MOBILE"
-msgstr ""
-
-msgid "WORK"
-msgstr ""
-
-msgid "FIRST_LAST"
-msgstr ""
-
-msgid "NEXT"
-msgstr ""
-
-msgid "PHOTO"
-msgstr ""
-
-msgid "ALL_PHONES"
-msgstr ""
-
-msgid "ALL_EMAILS"
-msgstr ""
-
-msgid "SIGN_IN_WITH"
-msgstr ""
-
-msgid "ua"
-msgstr ""
-
-msgid "LAST_FIRST"
-msgstr ""
-
-msgid "GRP_NAME"
-msgstr ""
