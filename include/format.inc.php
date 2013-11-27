@@ -9,6 +9,9 @@
     <script src="js/bootstrap.min.js"></script>
     
 	<style type="text/css">
+img {
+	max-width : none;
+}
 <?php
 /*
  * - $LastChangedDate$
