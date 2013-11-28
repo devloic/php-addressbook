@@ -33,7 +33,7 @@
            );
 
   // Enable quick adding of unstructured addresses
-  $quickadd = true;
+  $quickadd = false;
 
   // Don't display groups
   $nogroups = false;
