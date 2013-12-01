@@ -367,7 +367,7 @@ $month_from_where = "$base_from LEFT OUTER JOIN $month_lookup
                           WHERE $base_where ";
 
 $groups_from_where = "$table_groups WHERE domain_id = '$domain_id' ";
-$group_from_where  = $groups_from_where."group_name = '$group_name' ";
+$group_from_where  = $groups_from_where." AND group_name = '$group_name' ";
 
 if(isset($part)) {
   $participants = array_filter(explode(';', $part));
