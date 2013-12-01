@@ -4,16 +4,27 @@ include ("include/dbconnect.php");
 include ("include/format.inc.php");
 echo "<title>Groups | Address Book</title>";
 include ("include/header.inc.php");
+include ("include/photo.class.php");
 
 
-echo "<h1>".ucfmsg('GROUPS')."</h1>";
+echo "<h1>".ucfmsg('CLUBS')."</h1>";
 
 if($read_only) {
 	echo "<br /><div class='msgbox'>Editing is disabled.<br /><i>return to the <a href='group$page_ext'>group page</a></i></div>";
 } else {
 if($submit) {
-		$sql = "INSERT INTO $table_groups (domain_id, group_name, group_header, group_footer,  group_parent_id)
-		                           VALUES ('$domain_id', '$group_name','$group_header','$group_footer','$group_parent_id')";
+
+	if (isset ( $_FILES ["group_logo"] ) && $_FILES ["group_logo"] ["error"] <= 0) {
+			
+		$file_tmp_name = $_FILES ["group_logo"] ["tmp_name"];
+		$file_name = $_FILES ["group_logo"] ["name"];
+		$photo = new Photo ( $file_tmp_name );
+		$photo->scaleToMaxSide ( 150 );
+		$group_logo = $photo->getBase64 ();
+	}
+	
+		$sql = "INSERT INTO $table_groups (domain_id, group_name, group_logo,group_header, group_footer,  group_parent_id)
+		                           VALUES ('$domain_id', '$group_name','$group_logo','$group_header','$group_footer','$group_parent_id')";
 		$result = mysql_query($sql);
 
 		echo "<br /><div class='msgbox'>A new group has been entered into the address book.<br /><i>return to the <a href='group$page_ext'>group page</a></i></div>";
@@ -21,10 +32,18 @@ if($submit) {
 // -- Add people to a group
 } else if($new) {
 ?>
-  <form accept-charset="utf-8" method="post" action="<?php echo $_SERVER['PHP_SELF'];?>">
+  <form accept-charset="utf-8" enctype="multipart/form-data" method="post" action="<?php echo $_SERVER['PHP_SELF'];?>">
 		<label>Group name:</label>
-  	<input type="text" name="group_name" size="35" /><br />
-
+  	<input type="text" name="group_name" size="35" /><br /><br />
+  	
+  	 
+    <div class="fileupload fileupload-new" data-provides="fileupload">
+	  <div class="input-append">
+	  <label class="control-label"><?php echo ucfmsg("CLUB_LOGO") ?>:</label>
+	    <div class="uneditable-input span3"><i class="icon-file fileupload-exists"></i> <span class="fileupload-preview"></span></div><span class="btn btn-file"><span class="fileupload-new">Select Image</span><span class="fileupload-exists">Change</span><input type="file" name="group_logo" /></span><a href="#" class="btn fileupload-exists" data-dismiss="fileupload">Remove</a>
+	  </div>
+	</div>
+<!-- 
 		<label><?php echo ucfmsg('GROUP_PARENT'); ?></label>
 		<select name="group_parent_id">
   	  <option value="0">[none]</option>
@@ -40,11 +59,12 @@ if($submit) {
   		$parent_found = false;
   		while ($myrow2 = mysql_fetch_array($result_groups))
   		{
-  			echo "<option value=\"".$myrow2['group_id']."\">".$myrow2["group_name"]."</option>\n";
+  		echo "<option value=\"".$myrow2['group_id']."\">".$myrow2["group_name"]."</option>\n";
   		}
   	?>
-   </select><br /><br />
-
+   </select><br /><br /> 
+-->
+<input type="hidden" name="group_parent_id" value="none" />
       <label>Group header (Logo):</label>
 	<textarea name="group_header" rows="10" cols="40"></textarea><br />
 
@@ -122,10 +142,20 @@ else if($update)
 	$sql="SELECT * FROM $table_groups WHERE group_id=$id";
 	$result = mysql_query($sql);
 	$resultsnumber = mysql_numrows($result);
-
+	
+	if (isset ( $_FILES ["group_logo"] ) && $_FILES ["group_logo"] ["error"] <= 0) {
+			
+		$file_tmp_name = $_FILES ["group_logo"] ["tmp_name"];
+		$file_name = $_FILES ["group_logo"] ["name"];
+		$photo = new Photo ( $file_tmp_name );
+		$photo->scaleToMaxSide ( 150 );
+		$group_logo = $photo->getBase64 ();
+		
+	}
+	
 	if($resultsnumber > 0)
 	{
-		if (!is_numeric($group_parent_id))
+		if (!isset($group_parent_id) || !is_numeric($group_parent_id)  )
 			$gpid='null';
 		else
 			$gpid=$group_parent_id;
@@ -133,6 +163,7 @@ else if($update)
                                                ", group_header='$group_header'".
                                                ", group_footer='$group_footer'". 
                                                ", group_parent_id=$gpid".
+                                               ", group_logo='$group_logo'".
                                              " WHERE group_id=$id";
 		$result = mysql_query($sql);
 
@@ -153,13 +184,21 @@ else if($edit || $id)
     $myrow = mysql_fetch_array($result);
 
 ?>
-	<form accept-charset="utf-8" method="post" action="<?php echo $_SERVER['PHP_SELF'];?>">
+	<form accept-charset="utf-8" enctype="multipart/form-data" method="post" action="<?php echo $_SERVER['PHP_SELF'];?>">
         <input type="hidden" name="id" value="<?php echo $myrow['group_id']?>" />
 
-		<label><?php echo ucfmsg('GROUP_NAME'); ?></label>
+		<label><?php echo ucfmsg('CLUB_NAME'); ?></label>
 		<input type="text" name="group_name" size="35" value="<?php echo $myrow['group_name'];?>" />
     <br /><br />
-
+    
+    <div class="fileupload fileupload-new" data-provides="fileupload">
+	  <div class="input-append">
+	  <label class="control-label"><?php echo ucfmsg("CLUB_LOGO") ?>:</label>
+	    <div class="uneditable-input span3"><i class="icon-file fileupload-exists"></i> <span class="fileupload-preview"></span></div><span class="btn btn-file"><span class="fileupload-new">Select Image</span><span class="fileupload-exists">Change</span><input type="file" name="group_logo" /></span><a href="#" class="btn fileupload-exists" data-dismiss="fileupload">Remove</a>
+	  </div>
+	</div>
+	
+<!-- 
 		<label><?php echo ucfmsg('GROUP_PARENT'); ?></label>
 		<select name="group_parent_id">
 				<?php
@@ -197,11 +236,13 @@ else if($edit || $id)
 				?>
 			</select>
 		<br /><br class="clear" />
-
-		<label><?php echo ucfmsg('GROUP_HEADER'); ?>:</label>
+ -->	
+ 	<input type="hidden" name="group_parent_id" value="none" />
+ 	
+		<label><?php echo ucfmsg('CLUB_HEADER'); ?>:</label>
 		<textarea name="group_header" rows="10" cols="40"><?php echo $myrow["group_header"]?></textarea><br />
 
-		<label><?php echo ucfmsg('GROUP_FOOTER'); ?>:</label>
+		<label><?php echo ucfmsg('CLUB_FOOTER'); ?>:</label>
 		<textarea name="group_footer" rows="10" cols="40"><?php echo $myrow["group_footer"]?></textarea><br /><br />
 		<button class='btn btn-success' name='update' type='submit'   value="<?php  echo ucfmsg("UPDATE"); ?>"><?php echo ucfmsg('UPDATE'); ?></button>
 		
@@ -217,9 +258,9 @@ else
 
 ?>
 <form method="post" action="<?php echo $_SERVER['PHP_SELF'];?>">
-<button class='btn btn-success' name='new' type='submit'   value="<?php  echo ucfmsg("NEW_GROUP"); ?>"><?php echo ucfmsg('NEW_GROUP'); ?></button>
-<button class='btn btn-success' name='delete' type='submit'   value="<?php  echo ucfmsg("DELETE_GROUPS"); ?>"><?php echo ucfmsg('DELETE_GROUPS'); ?></button>
-<button class='btn btn-success' name='edit' type='submit'   value="<?php  echo ucfmsg("EDIT_GROUP"); ?>"><?php echo ucfmsg('EDIT_GROUP'); ?></button>
+<button class='btn btn-success' name='new' type='submit'   value="<?php  echo ucfmsg("NEW_CLUB"); ?>"><?php echo ucfmsg('NEW_CLUB'); ?></button>
+<button class='btn btn-success' name='delete' type='submit'   value="<?php  echo ucfmsg("DELETE_CLUB"); ?>"><?php echo ucfmsg('DELETE_CLUB'); ?></button>
+<button class='btn btn-success' name='edit' type='submit'   value="<?php  echo ucfmsg("EDIT_CLUB"); ?>"><?php echo ucfmsg('EDIT_CLUB'); ?></button>
   
 
 <hr />
@@ -235,9 +276,9 @@ else
 	}	
 ?>
 <br />
-  <button class='btn btn-success' name='new' type='submit'   value="<?php  echo ucfmsg("NEW_GROUP"); ?>"><?php echo ucfmsg('NEW_GROUP'); ?></button>
-<button class='btn btn-success' name='delete' type='submit'   value="<?php  echo ucfmsg("DELETE_GROUPS"); ?>"><?php echo ucfmsg('DELETE_GROUPS'); ?></button>
-<button class='btn btn-success' name='edit' type='submit'   value="<?php  echo ucfmsg("EDIT_GROUP"); ?>"><?php echo ucfmsg('EDIT_GROUP'); ?></button>
+  <button class='btn btn-success' name='new' type='submit'   value="<?php  echo ucfmsg("NEW_CLUB"); ?>"><?php echo ucfmsg('NEW_CLUB'); ?></button>
+<button class='btn btn-success' name='delete' type='submit'   value="<?php  echo ucfmsg("DELETE_CLUB"); ?>"><?php echo ucfmsg('DELETE_CLUB'); ?></button>
+<button class='btn btn-success' name='edit' type='submit'   value="<?php  echo ucfmsg("EDIT_CLUB"); ?>"><?php echo ucfmsg('EDIT_CLUB'); ?></button>
 
 </form>
 <?php 

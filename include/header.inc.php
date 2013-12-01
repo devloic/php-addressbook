@@ -30,6 +30,7 @@
 		$sql="SELECT * FROM $table_groups WHERE group_name = '$group_name'";
 		$result = mysql_query($sql);
 		$group_myrow = mysql_fetch_array($result);
-		echo $group_myrow['group_header'];
+		//echo $group_myrow['group_header'];
+		echo "<img width=75 src='group_photo.php?id=".$group_myrow['group_id']."'>";
 	}
 ?>

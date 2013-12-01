@@ -16,7 +16,7 @@
 if(!$read_only && $public_group_edit && $table_groups != "" && !$is_fix_group)
 { ?>
 	<li class="admin">
-		<a href="group<?php echo $page_ext; ?>"><?php echo msg('GROUPS'); ?></a>
+		<a href="group<?php echo $page_ext; ?>"><?php echo msg('CLUBS'); ?></a>
 	</li>
 <?php } ?>
 	<li class="all">
@@ -31,9 +31,11 @@ if(!$read_only && $public_group_edit && $table_groups != "" && !$is_fix_group)
 <?php
 if(isset($google_maps_keys) || isset($google_maps_key)) { 
 ?>
+	<!--  
 	<li class="export">
     	<a href="map<?php echo $page_ext_qry; ?>"><?php echo msg('MAP'); ?></a>
-  </li>
+  	</li>
+  	-->
 <?php 
 }  
 ?>
