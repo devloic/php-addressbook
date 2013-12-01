@@ -13,6 +13,31 @@ msgstr ""
 "X-Launchpad-Export-Date: 2012-11-05 07:28+0000\n"
 "X-Generator: Launchpad (build 16232)\n"
 
+msgid "CLUBS"
+msgstr ""
+
+msgid "NEW_CLUB"
+msgstr ""
+
+msgid "DELETE_CLUB"
+msgstr ""
+
+msgid "EDIT_CLUB"
+msgstr ""
+
+msgid "CLUB_LOGO"
+msgstr ""
+
+msgid "CLUB_NAME"
+msgstr ""
+
+msgid "CLUB_HEADER"
+msgstr ""
+
+msgid "CLUB_FOOTER"
+msgstr ""
+
+
 msgid "LANGUAGE"
 msgstr ""
 

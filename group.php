@@ -22,7 +22,9 @@ if($submit) {
 		$photo->scaleToMaxSide ( 150 );
 		$group_logo = $photo->getBase64 ();
 	}
-	
+	else{
+		$group_logo='';
+	}
 		$sql = "INSERT INTO $table_groups (domain_id, group_name, group_logo,group_header, group_footer,  group_parent_id)
 		                           VALUES ('$domain_id', '$group_name','$group_logo','$group_header','$group_footer','$group_parent_id')";
 		$result = mysql_query($sql);
@@ -152,7 +154,9 @@ else if($update)
 		$group_logo = $photo->getBase64 ();
 		
 	}
-	
+	else{
+		$group_logo='';
+	}
 	if($resultsnumber > 0)
 	{
 		if (!isset($group_parent_id) || !is_numeric($group_parent_id)  )
@@ -239,12 +243,17 @@ else if($edit || $id)
  -->	
  	<input type="hidden" name="group_parent_id" value="none" />
  	
+		<!-- 
 		<label><?php echo ucfmsg('CLUB_HEADER'); ?>:</label>
 		<textarea name="group_header" rows="10" cols="40"><?php echo $myrow["group_header"]?></textarea><br />
 
 		<label><?php echo ucfmsg('CLUB_FOOTER'); ?>:</label>
 		<textarea name="group_footer" rows="10" cols="40"><?php echo $myrow["group_footer"]?></textarea><br /><br />
-		<button class='btn btn-success' name='update' type='submit'   value="<?php  echo ucfmsg("UPDATE"); ?>"><?php echo ucfmsg('UPDATE'); ?></button>
+		 -->
+		 
+		 <input type='hidden' name="group_header" value='' />
+		  <input type='hidden' name="group_footer" value='' />
+		  <button class='btn btn-success' name='update' type='submit'   value="<?php  echo ucfmsg("UPDATE"); ?>"><?php echo ucfmsg('UPDATE'); ?></button>
 		
 	</form>
     <br />

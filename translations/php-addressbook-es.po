@@ -8,7 +8,7 @@ msgstr ""
 "Project-Id-Version: php-addressbook\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2012-10-25 14:49+0200\n"
-"PO-Revision-Date: 2013-11-27 11:02-0400\n"
+"PO-Revision-Date: 2013-12-01 11:39-0400\n"
 "Last-Translator: loic devaux <loicdevaux@hotmail.com>\n"
 "Language-Team:  <loicdevaux@hotmail.com>\n"
 "MIME-Version: 1.0\n"
@@ -16,6 +16,30 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "X-Launchpad-Export-Date: 2012-11-05 07:28+0000\n"
 "X-Generator: Poedit 1.5.7\n"
+
+msgid "CLUBS"
+msgstr "Clubes"
+
+msgid "NEW_CLUB"
+msgstr "Nuevo Club"
+
+msgid "DELETE_CLUB"
+msgstr "borrar club"
+
+msgid "EDIT_CLUB"
+msgstr "editar club"
+
+msgid "CLUB_LOGO"
+msgstr "Logo del club"
+
+msgid "CLUB_NAME"
+msgstr "Nombre del club"
+
+msgid "CLUB_HEADER"
+msgstr "Encabezado del club"
+
+msgid "CLUB_FOOTER"
+msgstr "Footer del club"
 
 msgid "LANGUAGE"
 msgstr "idioma"
