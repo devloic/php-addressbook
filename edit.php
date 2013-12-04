@@ -513,6 +513,8 @@ if ($submit) {
 
 		</div>
 	</div>
+	<?php
+	/*
 	<div class="control-group">
 		<label class="control-label"><?php echo ucfmsg("ANNIVERSARY") ?>:</label>
 		<div class="controls">
@@ -567,15 +569,21 @@ if ($submit) {
 				<option value="december"><?php echo ucfmsg("december") ?></option>
 			</select> <input class="byear" type="text" name="ayear" size="4"
 				maxlength="4" value="<?php echo $myrow['ayear']?>" />
-
+ */
+ ?>  
 <?php
 		/*
-		 * Group handling on change <label><?php echo ucfmsg("GROUP") ?>:</label> <div class="controls"> <?php if(isset($table_groups) and $table_groups != "" and !$is_fix_group) { ?> <select name="new_group"> <?php if($group_name != "") { echo "<option>$group_name</option>\n"; } $sql = "SELECT group_name FROM $table_groups ORDER BY lower(group_name) ASC"; $result_groups = mysql_query($sql); $result_gropup_snumber = mysql_numrows($result_groups); while ($myrow_group = mysql_fetch_array($result_groups)) { echo "<option>".$myrow_group["group_name"]."</option>\n"; } ?> </select> <?php } ?> 
+		 * Group handling on change  
 		 */
-		?>
-    
+?>
+		<label><?php echo ucfmsg("GROUP") ?>:</label> <div class="controls"> <?php if(isset($table_groups) and $table_groups != "" and !$is_fix_group) { ?> <select name="new_group"> <?php if($group_name != "") { echo "<option>$group_name</option>\n"; } $sql = "SELECT group_name FROM $table_groups ORDER BY lower(group_name) ASC"; $result_groups = mysql_query($sql); $result_gropup_snumber = mysql_numrows($result_groups); while ($myrow_group = mysql_fetch_array($result_groups)) { echo "<option>".$myrow_group["group_name"]."</option>\n"; } ?> </select> 
+		<?php } ?>
+    <?php 
+    /*
 		</div>
 	</div>
+	
+	
 	<div class="control-group">
 		<label class="control-label"><b><?php echo ucfmsg("SECONDARY") ?></b></label>
 		<div class="controls">
@@ -600,6 +608,15 @@ if ($submit) {
 
 		</div>
 	</div>
+		*/
+		?>
+		<input type="hidden" name="aday"  value="">
+		<input type="hidden" name="amonth"  value="">
+		<input type="hidden" name="ayear"  value="">
+	  <input type="hidden" name="address2"  value="">
+	  <input type="hidden" name="phone2"  value="">
+	  
+	  
 	<div class="control-group">
 		<label class="control-label"><?php echo ucfmsg("NOTES") ?>:</label>
 		<div class="controls">
@@ -1043,6 +1060,7 @@ function proposeNames() {
 
 		</div>
 	</div>
+	<?php /*
 	<div class="control-group">
 		<label class="control-label"><?php echo ucfmsg("ANNIVERSARY") ?>:</label>
 		<div class="controls">
@@ -1104,12 +1122,17 @@ function proposeNames() {
 			</select> <input class="byear" type="text" name="ayear" size="4"
 				maxlength="4" value="<?php echoIfSet($addr, 'ayear'); ?>" />
 
+
+	</div>
+		</div>
+		
+		*/
+			?>
     <?php
 		if (isset ( $table_groups ) and $table_groups != "" and ! $is_fix_group) {
 			?>
-
- </div>
-	</div>
+	
+ 
 	<div class="control-group">
 		<label class="control-label"><?php echo ucfmsg("GROUP") ?>:</label>
 		<div class="controls">
@@ -1130,11 +1153,12 @@ function proposeNames() {
 			}
 			?>
         </select>
+        </div>
+	</div>
     <?php } ?>
     
-    
-		</div>
-	</div>
+    <?php /*
+		
 	<div class="control-group">
 		<label class="control-label"><b><?php echo ucfmsg("SECONDARY") ?></b></label>
 		<div class="controls">
@@ -1158,7 +1182,8 @@ function proposeNames() {
 				value="<?php echoIfSet($addr, 'phone2'); ?>" size="35" />
 		</div>
 	</div>
-	
+	*/
+	?>
 			<div class="control-group">
 				<label class="control-label"><?php echo ucfmsg("NOTES") ?>:</label>
 				<div class="controls">
