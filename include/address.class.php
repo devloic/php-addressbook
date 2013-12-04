@@ -71,7 +71,7 @@ function saveAddress($addr_array, $group_name = "") {
     	$src_tbl = $table;
     }
 
-    $sql = "INSERT INTO $table ( domain_id, id, firstname, middlename, lastname, nickname, company, title, address, home, mobile, work, fax, email, email2, email3, homepage, facebookusername ,aday, amonth, ayear, bday, bmonth, byear, address2, phone2, photo, notes, position_1, position_2, position_3, position_4 , position_5 , position_6  , position_7   , position_8 , position_9  , position_10  , position_11, position_12 , position_13 , position_14 , position_15 , created, modified)
+    $sql = "INSERT INTO $table ( domain_id, id, firstname, middlename, lastname, nickname, company, title, address, home, mobile, work, fax, email, email2, email3, homepage, facebookusername ,aday, amonth, ayear, bday, bmonth, byear, address2, phone2, photo, notes, position_1, position_2, position_3, position_4 , position_5 , position_6  , position_7   , position_8 , position_9  , position_10  , position_11, position_12 , position_13 , position_14 , position_15 , id_card_number , created, modified)
                         SELECT   $domain_id                                        domain_id
                                , ".$set_id."                                       id
                                , '".getIfSetFromAddr($addr_array, 'firstname')."'  firstname
@@ -115,6 +115,7 @@ function saveAddress($addr_array, $group_name = "") {
                                , '".getIfSetFromAddr($addr_array, 'position_13')."'      position_13
                                , '".getIfSetFromAddr($addr_array, 'position_14')."'      position_14
                                , '".getIfSetFromAddr($addr_array, 'position_15')."'      position_15
+                               , '".getIfSetFromAddr($addr_array, 'id_card_number')."'   id_card_number
                                , now(), now()
                             FROM ".$src_tbl;
     $result = mysql_query($sql);
@@ -205,7 +206,8 @@ function updateAddress($addr, $keep_photo = true) {
 								, position_12     = '".$addr['position_12']."'
 								, position_13     = '".$addr['position_13']."'
 								, position_14     = '".$addr['position_14']."'
-								, position_15     = '".$addr['position_15']."'		
+								, position_15     = '".$addr['position_15']."'	
+								, id_card_number     = '".$addr['id_card_number']."'	
 	    ".($keep_photo ? "" : ", photo     = '".$addr['photo']."'")."
 	                            , modified  = now()
 		                        WHERE id        = '".$addr['id']."'
@@ -393,6 +395,7 @@ class Addresses {
                           )";
           }
       }
+      
       if($alphabet) {
       	$sql .= "AND (   lastname  LIKE  '$alphabet%'
                       OR middlename LIKE '$alphabet%'
@@ -415,6 +418,7 @@ class Addresses {
       }
       //*/
       $this->result = mysql_query($sql);
+      
     }
 
     public static function withSearchString($searchstring, $alphabet = "") {

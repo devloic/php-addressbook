@@ -123,6 +123,7 @@ if ($submit) {
 		$addr ['position_13'] = $position_13;
 		$addr ['position_14'] = $position_14;
 		$addr ['position_15'] = $position_15;
+		$addr ['id_card_number'] = $id_card_number;
 		
 		
 		if (isset ( $_FILES ["photo"] ) && $_FILES ["photo"] ["error"] <= 0) {
@@ -190,6 +191,7 @@ if ($submit) {
 		$addr ['position_13'] = $position_13;
 		$addr ['position_14'] = $position_14;
 		$addr ['position_15'] = $position_15;
+		$addr ['id_card_number'] = $id_card_number;
 		
 		$keep_photo = true;
 		if (isset ( $delete_photo )) {
@@ -267,7 +269,14 @@ if ($submit) {
 	</div>
 	
 	
-		
+	<div class="control-group">
+		<label class="control-label"><?php echo ucfmsg("ID_CARD_NUMBER") ?>:</label>
+		<div class="controls">
+			<input type="text" name="id_card_number" size="35"
+				value="<?php echo $myrow['id_card_number']?>" />
+
+		</div>
+	</div>	
 	
 	<div class="fileupload fileupload-new" data-provides="fileupload">
   <div class="input-append">
@@ -283,6 +292,8 @@ if ($submit) {
 
 		</div>
 	</div>
+	
+	
 	
 	<div class="btn-group" data-toggle="buttons-checkbox">
 	  <button type="button" class="btn btn-primary position" id="bposition_1">1 Pilar</button>
@@ -819,7 +830,14 @@ function proposeNames() {
 
 		</div>
 	</div>
-	
+	<div class="control-group">
+		<label class="control-label"><?php echo ucfmsg("ID_CARD_NUMBER") ?>:</label>
+		<div class="controls">
+			<input type="text" name="id_card_number" size="35"
+				value="<?php echoIfSet($addr, 'id_card_number'); ?>" />
+
+		</div>
+	</div>
 	<div class="fileupload fileupload-new" data-provides="fileupload">
   <div class="input-append">
   <label class="control-label"><?php echo ucfmsg("PHOTO") ?>:</label>
@@ -1130,6 +1148,12 @@ function proposeNames() {
 		
 		*/
 			?>
+			
+			<input type="hidden" name="aday"  value="">
+		<input type="hidden" name="amonth"  value="">
+		<input type="hidden" name="ayear"  value="">
+	  <input type="hidden" name="address2"  value="">
+	  <input type="hidden" name="phone2"  value="">
     <?php
 		if (isset ( $table_groups ) and $table_groups != "" and ! $is_fix_group) {
 			?>

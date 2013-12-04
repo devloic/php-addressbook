@@ -16,6 +16,9 @@ msgstr ""
 msgid "CLUBS"
 msgstr ""
 
+msgid "ID_CARD_NUMBER"
+msgstr ""
+
 msgid "NEW_CLUB"
 msgstr ""
 
