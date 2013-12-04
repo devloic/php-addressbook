@@ -569,6 +569,8 @@ if ($submit) {
 				<option value="december"><?php echo ucfmsg("december") ?></option>
 			</select> <input class="byear" type="text" name="ayear" size="4"
 				maxlength="4" value="<?php echo $myrow['ayear']?>" />
+ </div>
+ </div>
  */
  ?>  
 <?php
@@ -576,12 +578,12 @@ if ($submit) {
 		 * Group handling on change  
 		 */
 ?>
-		<label><?php echo ucfmsg("GROUP") ?>:</label> <div class="controls"> <?php if(isset($table_groups) and $table_groups != "" and !$is_fix_group) { ?> <select name="new_group"> <?php if($group_name != "") { echo "<option>$group_name</option>\n"; } $sql = "SELECT group_name FROM $table_groups ORDER BY lower(group_name) ASC"; $result_groups = mysql_query($sql); $result_gropup_snumber = mysql_numrows($result_groups); while ($myrow_group = mysql_fetch_array($result_groups)) { echo "<option>".$myrow_group["group_name"]."</option>\n"; } ?> </select> 
+		<?php if(isset($table_groups) and $table_groups != "" and !$is_fix_group) { ?> <label><?php echo ucfmsg("GROUP") ?>:</label> <div class="controls"> <select name="new_group"> <?php if($group_name != "") { echo "<option>$group_name</option>\n"; } $sql = "SELECT group_name FROM $table_groups ORDER BY lower(group_name) ASC"; $result_groups = mysql_query($sql); $result_gropup_snumber = mysql_numrows($result_groups); while ($myrow_group = mysql_fetch_array($result_groups)) { echo "<option>".$myrow_group["group_name"]."</option>\n"; } ?> </select></div><br class="clear" /> 
 		<?php } ?>
     <?php 
     /*
-		</div>
-	</div>
+		
+	
 	
 	
 	<div class="control-group">
