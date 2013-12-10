@@ -70,8 +70,8 @@ function saveAddress($addr_array, $group_name = "") {
     	$set_id  = "ifnull(max(id),0)+1"; // '0' is a bad ID
     	$src_tbl = $table;
     }
-
-    $sql = "INSERT INTO $table ( domain_id, id, firstname, middlename, lastname, nickname, company, title, address, home, mobile, work, fax, email, email2, email3, homepage, facebookusername ,aday, amonth, ayear, bday, bmonth, byear, address2, phone2, photo, notes, position_1, position_2, position_3, position_4 , position_5 , position_6  , position_7   , position_8 , position_9  , position_10  , position_11, position_12 , position_13 , position_14 , position_15 , id_card_number , created, modified)
+    
+    $sql = "INSERT INTO $table ( domain_id, id, firstname, middlename, lastname, nickname, company, title, address, home, mobile, work, fax, email, email2, email3, homepage, facebookusername ,aday, amonth, ayear, bday, bmonth, byear, address2, phone2, photo, notes, position_1, position_2, position_3, position_4 , position_5 , position_6  , position_7   , position_8 , position_9  , position_10  , position_11, position_12 , position_13 , position_14 , position_15 , id_card_number , twitter, skype, president,vicepresident,treasurer,secretarygeneral,communication,trainer,referee,created, modified)
                         SELECT   $domain_id                                        domain_id
                                , ".$set_id."                                       id
                                , '".getIfSetFromAddr($addr_array, 'firstname')."'  firstname
@@ -116,8 +116,20 @@ function saveAddress($addr_array, $group_name = "") {
                                , '".getIfSetFromAddr($addr_array, 'position_14')."'      position_14
                                , '".getIfSetFromAddr($addr_array, 'position_15')."'      position_15
                                , '".getIfSetFromAddr($addr_array, 'id_card_number')."'   id_card_number
+                               , '".getIfSetFromAddr($addr_array, 'twitter')."'   twitter
+                               , '".getIfSetFromAddr($addr_array, 'skype')."'   skype
+                               , '".getIfSetFromAddr($addr_array, 'president')."'   president
+                               , '".getIfSetFromAddr($addr_array, 'vicepresident')."'   vicepresident
+                               , '".getIfSetFromAddr($addr_array, 'treasurer')."'   treasurer
+                               , '".getIfSetFromAddr($addr_array, 'secretarygeneral')."'   secretarygeneral
+                               , '".getIfSetFromAddr($addr_array, 'communication')."'   communication
+                               , '".getIfSetFromAddr($addr_array, 'trainer')."'   trainer
+                               , '".getIfSetFromAddr($addr_array, 'referee')."'   referee
                                , now(), now()
                             FROM ".$src_tbl;
+    
+  
+    
     $result = mysql_query($sql);
     
     if(mysql_errno() > 0) {
@@ -207,17 +219,29 @@ function updateAddress($addr, $keep_photo = true) {
 								, position_13     = '".$addr['position_13']."'
 								, position_14     = '".$addr['position_14']."'
 								, position_15     = '".$addr['position_15']."'	
-								, id_card_number     = '".$addr['id_card_number']."'	
+								, id_card_number     = '".$addr['id_card_number']."'
+								, twitter     = '".$addr['twitter']."'
+								, skype     = '".$addr['skype']."'
+								, president     = '".$addr['president']."'
+								, vicepresident     = '".$addr['vicepresident']."'
+								, treasurer     = '".$addr['treasurer']."'
+								, secretarygeneral     = '".$addr['secretarygeneral']."'
+								, communication     = '".$addr['communication']."'
+								, trainer     = '".$addr['trainer']."'
+								, referee     = '".$addr['referee']."'
+															
 	    ".($keep_photo ? "" : ", photo     = '".$addr['photo']."'")."
 	                            , modified  = now()
 		                        WHERE id        = '".$addr['id']."'
 		                          AND domain_id = '$domain_id';";
+	    
 		  $result = mysql_query($sql);
     }
 		// header("Location: view?id=$id");
     }
 
 	return $is_valid;
+	 
 }
 
 $phone_delims = array("'", '/', "-", " ", "(", ")", ".");

@@ -48,15 +48,18 @@ echo "<div id='a-z'><a href='$link=a'>A</a> | <a href='$link=b'>B</a> | <a href=
 <?php
 
   $addresses = Addresses::withSearchString($searchstring, $alphabet);
+  
   $result = $addresses->getResults();
+
 	$resultsnumber = mysql_numrows($result);
-	
+
 	// TBD:  Pagination
 	// http://php.about.com/od/phpwithmysql/ss/php_pagination.htm
 	
 	echo "<label style='width:24em;'><strong>".msg('NUMBER_OF_RESULTS').": <span id='search_count'>$resultsnumber</span></strong></label>";
 
 if(isset($table_groups) and $table_groups != "" and !$is_fix_group) { ?>
+<div>
 
 <form id="right" method="get">
 	<select name="group" onchange="this.parentNode.submit()">
@@ -78,7 +81,48 @@ if(isset($table_groups) and $table_groups != "" and !$is_fix_group) { ?>
 			}
 		?>
 	</select>
+	&nbsp;
+	<select name="position_filter" onchange="this.parentNode.submit()">
+		<?php
+			if($position_filter != "") {
+				echo "<option>$position_filter</option>\n";
+			}
+		?>
+		<option value="">[<?php echo msg("ALL"); ?>]</option>
+		<option value="[none]">[<?php echo msg("NONE"); ?>]</option>
+		<option >[<?php echo msg("FORWARDS"); ?>]</option>
+		<option >[<?php echo msg("BACKS"); ?>]</option>
+		<option >[<?php echo msg("PROP"); ?>]</option>
+		<option >[<?php echo msg("HOOKER"); ?>]</option>
+		<option >[<?php echo msg("LOCKS"); ?>]</option>
+		<option >[<?php echo msg("FLANKER"); ?>]</option>
+		<option >[<?php echo msg("NUMBER 8"); ?>]</option>
+		<option >[<?php echo msg("SCRUM_HALF"); ?>]</option>
+		<option >[<?php echo msg("FLY_HALF"); ?>]</option>
+		<option >[<?php echo msg("CENTRE"); ?>]</option>
+		<option >[<?php echo msg("WING"); ?>]</option>
+		<option >[<?php echo msg("FULL-BACK"); ?>]</option>
+	</select>
+	<select name="role_filter" onchange="this.parentNode.submit()" style="margin-bottom: 10px" >
+		<?php
+			if($role_filter != "") {
+				echo "<option>$role_filter</option>\n";
+			}
+		?>
+		<option value="">[<?php echo msg("ALL"); ?>]</option>
+		<option value="[none]">[<?php echo msg("NONE"); ?>]</option>
+		<option >[<?php echo msg("BOARD MEMBER"); ?>]</option>
+		<option >[<?php echo msg("PRESIDENT"); ?>]</option>
+		<option >[<?php echo msg("VICEPRESIDENT"); ?>]</option>
+		<option >[<?php echo msg("SECRETARYGENERAL"); ?>]</option>
+		<option >[<?php echo msg("TREASURER"); ?>]</option>
+		<option >[<?php echo msg("COMMUNICATION"); ?>]</option>
+		<option >[<?php echo msg("TRAINER"); ?>]</option>
+		<option >[<?php echo msg("REFEREE"); ?>]</option>
+	</select>
 </form>
+
+
 <?php } ?>
 <br /><br class="clear" />
 
@@ -126,6 +170,7 @@ function addRow($row) {
     foreach($myrow as $mycol => $mycolval) {
        ${$mycol} = $mycolval;
     }
+    
     
 	$email     = $addr->firstEMail();
     if($email != "" && $email != $myrow['email2']) {
@@ -265,13 +310,13 @@ function addRow($row) {
 	} 
 	
 	echo "</table>";
-	echo "&nbsp;<input type='checkbox' id='MassCB' onclick=\"MassSelection()\" /> <em><strong>".ucfmsg("SELECT_ALL")."</strong></em><br><br>";
+	echo "&nbsp;<input style='margin:0px' type='checkbox' id='MassCB' onclick=\"MassSelection()\" /> <em><strong>".ucfmsg("SELECT_ALL")."</strong></em><br><br>";
 	if($use_doodle) {
     echo "<div class='left'><input type='button' value=\"".ucfmsg("DOODLE")."\"   onclick=\"Doodle()\" /></div>";
   }
   echo "<div class='left'><button class='btn btn-success' type='button' onclick=\"MailSelection()\"  value=\"".ucfmsg("SEND_EMAIL")."\">".ucfmsg('SEND_EMAIL')."</button></div>";
   if(! $read_only) {
-    echo "<div class='left'><button class='btn btn-success' type='button' onclick=\"DeleteSel()\"  value=\"".ucfmsg("DELETE")."\">".ucfmsg('DELETE')."</button></div>";
+    echo "<div class='left' ><button style='position: relative;left: 10px;' class='btn btn-danger' type='button' onclick=\"DeleteSel()\"  value=\"".ucfmsg("DELETE")."\">".ucfmsg('DELETE')."</button></div>";
         		
     
 	  if(isset($table_groups) and $table_groups != "" and !$is_fix_group)
@@ -286,7 +331,7 @@ function addRow($row) {
     
 	  	// -- Add to a group --
       echo "<div class='right'><button class='btn btn-success' name='add' type='submit'   value=\"".ucfmsg("ADD_TO")."\">".ucfmsg('ADD_TO')."</button>-";
-      echo "<select name='to_group'>";
+      echo "<select name='to_group' style='margin-bottom: 0'>";
     
 	  	$sql="SELECT group_name FROM $groups_from_where ORDER BY lower(group_name) ASC";
 	  	$result = mysql_query($sql);

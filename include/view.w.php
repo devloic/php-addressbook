@@ -111,9 +111,9 @@ function showOneEntry($r, $only_phone = false) {
 	 global $db, $table, $table_grp_adr, $table_groups, $print, $is_fix_group, $mail_as_image;
 
 	 $view = "";
-   $view .= add("<b>".$r['firstname'].(!empty($r['middlename']) ? " ".$r['middlename'] : "")." ".$r['lastname']."</b>");
-   $view .= add($r['nickname']);
-
+   $view .= add("<b>".$r['firstname'].(!empty($r['middlename']) ? " ".$r['middlename'] : "")." ".$r['lastname']."</b>".'&nbsp;&nbsp;"'.$r['nickname'].'"');
+   $view .= addBirthday($r['bday'], $r['bmonth'], $r['byear'],'');
+    
    $b64 = explode(";", $r['photo']);
    if(count($b64) >= 3 && ! $only_phone) {
      $b64 = $b64[2];
@@ -128,13 +128,14 @@ function showOneEntry($r, $only_phone = false) {
      $view .= ($r['title'] != ""?"<i>":"").add($r['title']).($r['title'] != ""?"</i>":"");
      $view .= add($r['company']);
 //     $view .= addGroup($r, array('address'));
-     $view .= add(str_replace("\n", "<br />", trim($r["address"])));
+     $view .= add(str_replace("\n", "<br />", trim($r["address"])),ucfmsg('Address:').'<br/>');
      $view .= addGroup($r, array('home','mobile','work','fax'));
    }
-   $view .= addPhone($r['home'],   ucfmsg('H:'));
-   $view .= addPhone($r['mobile'], ucfmsg('M:'));
-   $view .= addPhone($r['work'],   ucfmsg('W:'));
-   $view .= addPhone($r['fax'],    ucfmsg('F:'));
+   $view .= add($r['id_card_number'],   ucfmsg('Carnet:'));
+   $view .= addPhone($r['home'],   ucfmsg('Home').':');
+   $view .= addPhone($r['mobile'], ucfmsg('Mobile').':');
+   $view .= addPhone($r['work'],   ucfmsg('Work').':');
+   $view .= addPhone($r['fax'],    ucfmsg('Fax').':');
    if(! $only_phone) {
 
        $view .= addGroup($r, array('email','email2','email3','homepage'));
@@ -143,16 +144,15 @@ function showOneEntry($r, $only_phone = false) {
        $view .= ($r['email2'] != "" ? "<img src=\"b64img.php?text=".base64_encode(($r['email2']))."\"><br/>" : "");
        $view .= ($r['email3'] != "" ? "<img src=\"b64img.php?text=".base64_encode(($r['email3']))."\"><br/>" : "");
      } else {
+       $view .=ucfmsg('EMAILS').':<br/>';
        $view .= addEmail($r['email']);
        $view .= addEmail($r['email2']);
        $view .= addEmail($r['email3']);
      }
+	   $view .= add('<a target="_blank" href="http://www.facebook.com/'.$r['facebookusername'].'">'.$r['facebookusername'].'</a>',   ucfmsg('Facebook:'));
 	   $view .= addHomepage($r['homepage']);
 
-	   $view .= addGroup($r, array('bday','bmonth','byear'));
-	   $view .= addBirthday($r['bday'], $r['bmonth'], $r['byear'], ucfmsg('BIRTHDAY'));
-	   $view .= addBirthday($r['aday'], $r['amonth'], $r['ayear'], ucfmsg('ANNIVERSARY'));
-
+	  
 	   $view .= addGroup($r, array('address2','phone2'));
 	   $view .= add(str_replace("\n", "<br />", trim($r['address2'])));
   	 $view .= addGroup($r, array('phone2'));

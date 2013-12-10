@@ -35,7 +35,7 @@ if($_SERVER['SERVER_NAME'] == "php-addressbook.sourceforge.net") { ?>
 	</div>
 <?php } ?>
 			<ul>
-				<li><a href="http://sourceforge.net/projects/php-addressbook/">php-addressbook</a> <a href="notes.htm">v<?php echo $version; ?></a></li>
+				<li>Contacto : <img src="lib/tcpdf/fbr/email_loic.png" /></li>
 			</ul>
 	</div>
 </div>

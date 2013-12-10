@@ -20,7 +20,7 @@
   	if(! deleteAddresses($part_sql)) {
   		echo "<br /><div class='msgbox'>Invalid record, sorry but the record no longer exsists<br /><i>return to <a href='index.php'>home page</a></i></div>";
   	} else {
-  		echo "<br /><div class='msgbox'>Record successful deleted</i></div>";
+  		echo "<br /><div class='msgbox'>Record successfully deleted</i></div>";
   	}
 	} else {
     echo "<br /><div class='msgbox'>Deleting is disabled.</div>\n";  	

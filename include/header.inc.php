@@ -16,11 +16,11 @@ header ( 'Content-Type:text/html; charset=UTF-8' );
 <?php echo "<b>(".$_SERVER['REMOTE_ADDR'].")</b>"; ?>
 <?php } ?>
 			</div>
-		<div id="header">
+		<div id="header" style="left: -380px;position: relative;">
 			<h1>
 				<a href=".">Address Book</a>
 			</h1>
-			<a href="."><img src="<?php echo $url_images; ?>title_x2.png"
+			<a href="." ><img  src="<?php echo $url_images; ?>lib/tcpdf/fbr/FBR_2013.jpg"
 				width=340 height=75 title="Addressbook" alt="Addressbook" id="logo" /></a>
 		</div>
 		<div id="nav">

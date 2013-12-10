@@ -1,4 +1,5 @@
 <?php
+
 	include ("include/dbconnect.php");
 	include ("include/format.inc.php");
 
@@ -111,5 +112,5 @@ showOneEntry($r);
 	echo "<div class'msgbox'>Please select a valid entry.</div>";
 
 }
-include ("include/footer.inc.php");
+//include ("include/footer.inc.php");
 ?>

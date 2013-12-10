@@ -13,6 +13,24 @@ msgstr ""
 "X-Launchpad-Export-Date: 2012-11-05 07:28+0000\n"
 "X-Generator: Launchpad (build 16232)\n"
 
+msgid "PHONE_LINE"
+msgstr ""
+
+msgid "WEBSITE"
+msgstr ""
+
+msgid "FACEBOOK_PAGE"
+msgstr ""
+
+msgid "FACEBOOK_GROUP"
+msgstr ""
+
+msgid "TWITTER"
+msgstr ""
+
+msgid "SKYPE"
+msgstr ""
+
 msgid "CLUBS"
 msgstr ""
 

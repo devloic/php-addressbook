@@ -16,7 +16,7 @@
 if(!$read_only && $public_group_edit && $table_groups != "" && !$is_fix_group)
 { ?>
 	<li class="admin">
-		<a href="group<?php echo $page_ext; ?>"><?php echo msg('CLUBS'); ?></a>
+		<a  href="group<?php echo $page_ext; ?>"><?php echo msg('CLUBS'); ?></a>
 	</li>
 <?php } ?>
 	<li class="all">
@@ -24,6 +24,9 @@ if(!$read_only && $public_group_edit && $table_groups != "" && !$is_fix_group)
 	</li>
 	<li class="export">
     	<a href="view<?php echo $page_ext_qry; ?>all&amp;print"><?php echo msg('PRINT_ALL'); ?></a>
+  </li>
+  <li class="export">
+    	<a href="pdf<?php echo $page_ext_qry; ?>all&amp;print"><?php echo msg('PDF'); ?></a>
   </li>
 	<li class="export">
       <a href="view<?php echo $page_ext_qry; ?>all&amp;print&amp;phones"><?php echo msg('PRINT_PHONES'); ?></a>

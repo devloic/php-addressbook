@@ -25,8 +25,8 @@ if($submit) {
 	else{
 		$group_logo='';
 	}
-		$sql = "INSERT INTO $table_groups (domain_id, group_name, group_logo,group_header, group_footer,  group_parent_id)
-		                           VALUES ('$domain_id', '$group_name','$group_logo','$group_header','$group_footer','$group_parent_id')";
+		$sql = "INSERT INTO $table_groups (domain_id, group_name, group_logo,group_header, group_footer,  group_parent_id,group_address,group_telmobile,group_telwork,group_twitter,group_facebook_page,group_facebook_group,group_website)
+		                           VALUES ('$domain_id', '$group_name','$group_logo','$group_header','$group_footer','$group_parent_id','$group_address','$group_telmobile','$group_telwork','$group_twitter','$group_facebook_page','$group_facebook_group','$group_website')";
 		$result = mysql_query($sql);
 
 		echo "<br /><div class='msgbox'>A new group has been entered into the address book.<br /><i>return to the <a href='group$page_ext'>group page</a></i></div>";
@@ -45,6 +45,7 @@ if($submit) {
 	    <div class="uneditable-input span3"><i class="icon-file fileupload-exists"></i> <span class="fileupload-preview"></span></div><span class="btn btn-file"><span class="fileupload-new">Select Image</span><span class="fileupload-exists">Change</span><input type="file" name="group_logo" /></span><a href="#" class="btn fileupload-exists" data-dismiss="fileupload">Remove</a>
 	  </div>
 	</div>
+	
 <!-- 
 		<label><?php echo ucfmsg('GROUP_PARENT'); ?></label>
 		<select name="group_parent_id">
@@ -67,12 +68,73 @@ if($submit) {
    </select><br /><br /> 
 -->
 <input type="hidden" name="group_parent_id" value="none" />
-      <label>Group header (Logo):</label>
+     <!--  
+     <label>Group header (Logo):</label>
 	<textarea name="group_header" rows="10" cols="40"></textarea><br />
 
     <label>Group footer (Comment):</label>
 	<textarea name="group_footer" rows="10" cols="40"></textarea><br /><br />
-    <input type="submit" name="submit" value="Enter information" />
+	--> 
+	<input type="hidden" name="group_header" value="" />
+	<input type="hidden" name="group_footer" value="" />
+	<div class="control-group">
+		<label class="control-label"><?php echo ucfmsg("ADDRESS") ?>:</label>
+		<div class="controls">
+			<textarea name="group_address" rows="5" cols="35"></textarea>
+
+
+		</div>
+	</div>
+	<div class="control-group">
+		<label class="control-label"><?php echo ucfmsg("PHONE_MOBILE") ?>:</label>
+		<div class="controls">
+			<input type="text" name="group_telmobile"
+				value="" />
+
+		</div>
+	</div>
+	<div class="control-group">
+		<label class="control-label"><?php echo ucfmsg("PHONE_LINE") ?>:</label>
+		<div class="controls">
+			<input type="text" name="group_telwork" value="" />
+
+		</div>
+	</div>
+	
+	<div class="control-group">
+		<label class="control-label"><?php echo ucfmsg("WEBSITE") ?>:</label>
+		<div class="controls">
+			<input type="text" name="group_website" value="" />
+
+		</div>
+	</div>
+	
+	<div class="control-group">
+		<label class="control-label"><?php echo ucfmsg("FACEBOOK_PAGE") ?>:</label>
+		<div class="controls">
+			<input type="text" name="group_facebook_page" value="" />
+
+		</div>
+	</div>
+	
+	<div class="control-group">
+		<label class="control-label"><?php echo ucfmsg("FACEBOOK_GROUP") ?>:</label>
+		<div class="controls">
+			<input type="text" name="group_facebook_group" value="" />
+
+		</div>
+	</div>
+	
+	<div class="control-group">
+		<label class="control-label"><?php echo ucfmsg("TWITTER") ?>:</label>
+		<div class="controls">
+			<input type="text" name="group_twitter" value="" />
+
+		</div>
+	</div>
+	
+    <button class='btn btn-success' name='submit' type='submit'   value="Enter information">Enter information</button>
+		
   </form>
 <?php
 		
@@ -168,6 +230,13 @@ else if($update)
                                                ", group_footer='$group_footer'". 
                                                ", group_parent_id=$gpid".
                                                ", group_logo='$group_logo'".
+                                               ", group_address='$group_address'".
+                                               ", group_telmobile='$group_telmobile'".
+                                               ", group_telwork='$group_telwork'".
+                                               ", group_facebook_group='$group_facebook_group'".
+                                               ", group_facebook_page='$group_facebook_page'".
+                                               ", group_twitter='$group_twitter'".
+                                               ", group_website='$group_website'".
                                              " WHERE group_id=$id";
 		$result = mysql_query($sql);
 
@@ -201,6 +270,14 @@ else if($edit || $id)
 	    <div class="uneditable-input span3"><i class="icon-file fileupload-exists"></i> <span class="fileupload-preview"></span></div><span class="btn btn-file"><span class="fileupload-new">Select Image</span><span class="fileupload-exists">Change</span><input type="file" name="group_logo" /></span><a href="#" class="btn fileupload-exists" data-dismiss="fileupload">Remove</a>
 	  </div>
 	</div>
+	<?php
+	$sql = "SELECT group_logo FROM $table_groups WHERE group_id = $id";
+	$result = mysql_query($sql);
+	$r = mysql_fetch_array($result);
+	if ($r['group_logo'] !== ''){
+		?>
+		<img style="position:relative;left:180px;margin-bottom:20px" src="group_photo.php?id=<?php echo  $myrow['group_id']; ?>" />
+		<?php  } ?>
 	
 <!-- 
 		<label><?php echo ucfmsg('GROUP_PARENT'); ?></label>
@@ -251,6 +328,62 @@ else if($edit || $id)
 		<textarea name="group_footer" rows="10" cols="40"><?php echo $myrow["group_footer"]?></textarea><br /><br />
 		 -->
 		 
+		 	<div class="control-group">
+		<label class="control-label"><?php echo ucfmsg("ADDRESS") ?>:</label>
+		<div class="controls">
+			<textarea name="group_address" rows="5" cols="35"><?php echo $myrow["group_address"]?></textarea>
+
+
+		</div>
+	</div>
+		 <div class="control-group">
+		<label class="control-label"><?php echo ucfmsg("PHONE_MOBILE") ?>:</label>
+		<div class="controls">
+			<input type="text" name="group_telmobile"
+				value="<?php echo $myrow['group_telmobile']?>" />
+
+		</div>
+	</div>
+	<div class="control-group">
+		<label class="control-label"><?php echo ucfmsg("PHONE_LINE") ?>:</label>
+		<div class="controls">
+			<input type="text" name="group_telwork" value="<?php echo $myrow['group_telwork']?>" />
+
+		</div>
+	</div>
+	
+	<div class="control-group">
+		<label class="control-label"><?php echo ucfmsg("WEBSITE") ?>:</label>
+		<div class="controls">
+			<input type="text" name="group_website" value="<?php echo $myrow['group_website']?>" />
+
+		</div>
+	</div>
+	
+	<div class="control-group">
+		<label class="control-label"><?php echo ucfmsg("FACEBOOK_PAGE") ?>:</label>
+		<div class="controls">
+			<input type="text" name="group_facebook_page" value="<?php echo $myrow['group_facebook_page']?>" />
+
+		</div>
+	</div>
+	
+	<div class="control-group">
+		<label class="control-label"><?php echo ucfmsg("FACEBOOK_GROUP") ?>:</label>
+		<div class="controls">
+			<input type="text" name="group_facebook_group" value="<?php echo $myrow['group_facebook_group']?>" />
+
+		</div>
+	</div>
+	
+	<div class="control-group">
+		<label class="control-label"><?php echo ucfmsg("TWITTER") ?>:</label>
+		<div class="controls">
+			<input type="text" name="group_twitter" value="<?php echo $myrow['group_twitter']?>" />
+
+		</div>
+	</div>
+		 
 		 <input type='hidden' name="group_header" value='' />
 		  <input type='hidden' name="group_footer" value='' />
 		  <button class='btn btn-success' name='update' type='submit'   value="<?php  echo ucfmsg("UPDATE"); ?>"><?php echo ucfmsg('UPDATE'); ?></button>
@@ -268,7 +401,7 @@ else
 ?>
 <form method="post" action="<?php echo $_SERVER['PHP_SELF'];?>">
 <button class='btn btn-success' name='new' type='submit'   value="<?php  echo ucfmsg("NEW_CLUB"); ?>"><?php echo ucfmsg('NEW_CLUB'); ?></button>
-<button class='btn btn-success' name='delete' type='submit'   value="<?php  echo ucfmsg("DELETE_CLUB"); ?>"><?php echo ucfmsg('DELETE_CLUB'); ?></button>
+<button class='btn btn-danger' onclick="return confirm('<?php  echo ucfmsg("DELETE_CLUB"); ?>?')" name='delete' type='submit'   value="<?php  echo ucfmsg("DELETE_CLUB"); ?>"><?php echo ucfmsg('DELETE_CLUB'); ?></button>
 <button class='btn btn-success' name='edit' type='submit'   value="<?php  echo ucfmsg("EDIT_CLUB"); ?>"><?php echo ucfmsg('EDIT_CLUB'); ?></button>
   
 
@@ -276,7 +409,7 @@ else
 
 <?php
 	while ($myrow = mysql_fetch_array($result)) {
-		echo "<input type='checkbox' name='selected[]' value='".$myrow['group_id']."' title='Select (".$myrow['group_name'].")'/>";
+		echo "<input type='checkbox' style='margin:0px 7px;' name='selected[]' value='".$myrow['group_id']."' title='Select (".$myrow['group_name'].")'/>";
 		if($myrow['parent_name'] != "") {
 			echo $myrow['group_name']." <i>(".$myrow['parent_name'].")</i><br />";
 		} else {
@@ -285,8 +418,9 @@ else
 	}	
 ?>
 <br />
+
   <button class='btn btn-success' name='new' type='submit'   value="<?php  echo ucfmsg("NEW_CLUB"); ?>"><?php echo ucfmsg('NEW_CLUB'); ?></button>
-<button class='btn btn-success' name='delete' type='submit'   value="<?php  echo ucfmsg("DELETE_CLUB"); ?>"><?php echo ucfmsg('DELETE_CLUB'); ?></button>
+<button class='btn btn-danger'  name='delete' onclick="return confirm('<?php  echo ucfmsg("DELETE_CLUB"); ?>?')" type='submit'   value="<?php  echo ucfmsg("DELETE_CLUB"); ?>"><?php echo ucfmsg('DELETE_CLUB'); ?></button>
 <button class='btn btn-success' name='edit' type='submit'   value="<?php  echo ucfmsg("EDIT_CLUB"); ?>"><?php echo ucfmsg('EDIT_CLUB'); ?></button>
 
 </form>
