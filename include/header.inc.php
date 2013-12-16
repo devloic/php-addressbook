@@ -20,7 +20,7 @@ header ( 'Content-Type:text/html; charset=UTF-8' );
 			<h1>
 				<a href=".">Address Book</a>
 			</h1>
-			<a href="." ><img  src="<?php echo $url_images; ?>lib/tcpdf/fbr/FBR_2013.jpg"
+			<a href="." ><img  src="<?php echo $url_images; ?>lib/tcpdf/fbr/FBR_2013_low.jpg"
 				width=340 height=75 title="Addressbook" alt="Addressbook" id="logo" /></a>
 		</div>
 		<div id="nav">
