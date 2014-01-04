@@ -144,8 +144,10 @@ echo $group;
 	$result = mysql_query($sql, $db);
 	$r = mysql_fetch_array($result);
 	if ($r['photo'] !== ''){
+include_once "photo.php";
 		?>
-		<img style="position:relative;left:50px" src="photo.php?id=<?php echo $id; ?>" />
+		
+		<img style="position:relative;left:50px" src="<?php echo getImgPath($id);?>" />
 		<?php  } ?>
 	</div>
 	<?php }
@@ -733,6 +735,7 @@ if ($submit) {
 			$photo = new Photo ( $file_tmp_name );
 			$photo->scaleToMaxSide ( 150 );
 			$addr ['photo'] = $photo->getBase64 ();
+			
 		}
 		
 		if (isset ( $table_groups ) and $table_groups != "") {
@@ -759,6 +762,10 @@ if ($submit) {
 		$keep_photo = true;
 		if (isset ( $delete_photo )) {
 			$keep_photo = ! $delete_photo;
+			//delete existing photo
+			if (file_exists("img/generated/users/user_".$id.".jpg")){
+				unlink("img/generated/users/user_".$id.".jpg");
+			}
 		}
 		
 		if (isset ( $_FILES ["photo"] ) && $_FILES ["photo"] ["error"] <= 0) {
@@ -769,6 +776,10 @@ if ($submit) {
 			$photo->scaleToMaxSide ( 150 );
 			$addr ['photo'] = $photo->getBase64 ();
 			$keep_photo = false;
+			//delete existing photo
+			if (file_exists("img/generated/users/user_".$id.".jpg")){
+				unlink("img/generated/users/user_".$id.".jpg");
+			}
 		} else {
 			$addr ['photo'] = '';
 		}

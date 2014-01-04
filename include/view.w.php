@@ -111,7 +111,7 @@ function showOneEntry($r, $only_phone = false) {
 	 global $db, $table, $table_grp_adr, $table_groups, $print, $is_fix_group, $mail_as_image;
 
 	 $view = "";
-   $view .= add("<b>".$r['firstname'].(!empty($r['middlename']) ? " ".$r['middlename'] : "")." ".$r['lastname']."</b>".'&nbsp;&nbsp;"'.$r['nickname'].'"');
+   $view .= add("<b>".$r['firstname'].(!empty($r['middlename']) ? " ".$r['middlename'] : "")." ".$r['lastname']."</b>".'&nbsp;&nbsp;'.(!empty($r['nickname']) ?'"'.$r['nickname'].'"':""));
    $view .= addBirthday($r['bday'], $r['bmonth'], $r['byear'],'');
     
    $b64 = explode(";", $r['photo']);
@@ -120,7 +120,8 @@ function showOneEntry($r, $only_phone = false) {
      $b64 = explode(":", $b64);
      if(count($b64) >= 2) {
        $b64 = str_replace(" ", "", $b64[1]);
-       $view .= ($r['photo'] != "" ? '<img alt="Embedded Image" width=75 src="data:image/jpg;base64,'.$b64.'"/><br>' : "");
+       include_once 'photo.php';
+       $view .= ($r['photo'] != "" ? '<img width=75 src="'.getImgPath($r['id']).'"/><br>' : "");
      }
    }
   
@@ -144,14 +145,17 @@ function showOneEntry($r, $only_phone = false) {
        $view .= ($r['email2'] != "" ? "<img src=\"b64img.php?text=".base64_encode(($r['email2']))."\"><br/>" : "");
        $view .= ($r['email3'] != "" ? "<img src=\"b64img.php?text=".base64_encode(($r['email3']))."\"><br/>" : "");
      } else {
-       $view .=ucfmsg('EMAILS').':<br/>';
-       $view .= addEmail($r['email']);
-       $view .= addEmail($r['email2']);
-       $view .= addEmail($r['email3']);
+     	if(!empty($r['email']) || !empty($r['email2']) || !empty($r['email3']) ){
+	       $view .=ucfmsg('EMAILS').':<br/>';
+	       $view .= addEmail($r['email']);
+	       $view .= addEmail($r['email2']);
+	       $view .= addEmail($r['email3']);
+     	}
      }
+     if(!empty($r['facebookusername'])){
 	   $view .= add('<a target="_blank" href="http://www.facebook.com/'.$r['facebookusername'].'">'.$r['facebookusername'].'</a>',   ucfmsg('Facebook:'));
 	   $view .= addHomepage($r['homepage']);
-
+   }
 	  
 	   $view .= addGroup($r, array('address2','phone2'));
 	   $view .= add(str_replace("\n", "<br />", trim($r['address2'])));

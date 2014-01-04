@@ -46,7 +46,7 @@ $pdf->SetKeywords('PDF, Rugby, FBR');
 
 
 
-$pdf->SetHeaderData("../../fbr/FBR_2013.jpg", 50, 'Repertorio Federacion Boliviana de Rugby', 'loic@lapazrugby.com');
+$pdf->SetHeaderData("../../fbr/FBR_2013_low.jpg", 50, 'Repertorio Federacion Boliviana de Rugby', 'loic@lapazrugby.com');
 
 // set header and footer fonts
 $pdf->setHeaderFont(Array(PDF_FONT_NAME_MAIN, '', PDF_FONT_SIZE_MAIN));

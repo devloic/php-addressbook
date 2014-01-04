@@ -208,7 +208,8 @@ function addRow($row) {
 //        echo "<td>".embeddedImg($photo)."</td>";
 ///*
         if($photo != "") {
-          echo "<td><img width=75 src='photo.php?id=".$id."'></td>";
+        	require_once "photo.php";
+          echo "<td><img width=75 src='".getImgPath($id)."'></td>";
         } else {
           echo "<td></td>";
         }
