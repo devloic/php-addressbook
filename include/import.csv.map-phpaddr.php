@@ -24,6 +24,8 @@
   	 $addr['email2']    = getIfSet($rec,11);
   	                    
   	 $addr['address2']  = str_replace(", ", "\n", getIfSet($rec,12));
-  	 $addr['phone2']    = getIfSet($rec,13);	 
-  	 
+  	 $addr['phone2']    = getIfSet($rec,13);
+  	 $addr['facebookusername']    = getIfSet($rec,14);
+  	 $addr['skype']    = getIfSet($rec,15);
+  	 $addr['twitter']    = getIfSet($rec,16);
 ?>

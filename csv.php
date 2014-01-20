@@ -83,6 +83,11 @@ SELECT addr_addressbook.*, b_month_lookup .bmonth_num, amonth_num amonth_num FRO
 	add(ucfmsg("2ND_ADDRESS"));
 	add(ucfmsg("2ND_PHONE"));
 	
+	#facebook, skype,twitter
+	add(ucfmsg("FACEBOOK"));
+	add(ucfmsg("SKYPE"));
+	add(ucfmsg("TWITTER"));
+	
   if($use_utf_16LE)
   	print mb_convert_encoding( "\n", 'UTF-16LE', 'UTF-8');
   else
@@ -141,6 +146,11 @@ SELECT addr_addressbook.*, b_month_lookup .bmonth_num, amonth_num amonth_num FRO
 		# 2nd contact
 		add($myrow["address2"]);
 		add($myrow["phone2"]);
+		
+		#facebook, skype,twitter
+		add($myrow["facebookusername"]);
+		add($myrow["skype"]);
+		add($myrow["twitter"]);
 
     if($use_utf_16LE)
     	print mb_convert_encoding( "\n", 'UTF-16LE', 'UTF-8');
