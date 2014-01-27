@@ -57,12 +57,15 @@ echo "<div id='a-z'><a href='$link=a'>A</a> | <a href='$link=b'>B</a> | <a href=
 	// http://php.about.com/od/phpwithmysql/ss/php_pagination.htm
 	
 	echo "<label style='width:24em;'><strong>".msg('NUMBER_OF_RESULTS').": <span id='search_count'>$resultsnumber</span></strong></label>";
+	?>
 
-if(isset($table_groups) and $table_groups != "" and !$is_fix_group) { ?>
 <div>
 
 <form id="right" method="get">
-	<?php echo msg("CLUBS").":"; ?>&nbsp;<select name="group" onchange="this.parentNode.submit()">
+	<?php 
+
+if(isset($table_groups) and $table_groups != "" and !$is_fix_group) { 
+echo msg("CLUBS").":"; ?>&nbsp;<select name="group" onchange="this.parentNode.submit()">
 		<?php
 			if($group_name != "") {
 				echo "<option>$group_name</option>\n";
@@ -80,7 +83,7 @@ if(isset($table_groups) and $table_groups != "" and !$is_fix_group) { ?>
 			echo "<option>".$myrow["group_name"]."</option>\n";
 			}
 		?>
-	</select>
+	</select><?php } ?>
 	&nbsp;&nbsp;<?php echo msg("POSITION").":"; ?>
 	<select name="position_filter" onchange="this.parentNode.submit()">
 		<?php
@@ -165,7 +168,7 @@ if(isset($table_groups) and $table_groups != "" and !$is_fix_group) { ?>
 </form>
 
 
-<?php } ?>
+
 <br /><br class="clear" />
 
 <form accept-charset="utf-8" name="MainForm" method="post" action="group<?php echo $page_ext; ?>">
