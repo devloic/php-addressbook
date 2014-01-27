@@ -555,7 +555,7 @@ if (isset ( $part )) {
 			$part_ids [] = $one_part;
 		}
 	}
-	$part_sql = "(".$table.".id = '" . implode ( "' OR id = '", $part_ids ) . "')";
+	$part_sql = "(".$table.".id = '" . implode ( "' OR ".$table.".id = '", $part_ids ) . "')";
 } else if (isset ( $id )) {
 	$part_sql = $table . ".id = '$id'";
 }
