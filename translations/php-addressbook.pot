@@ -13,6 +13,115 @@ msgstr ""
 "X-Launchpad-Export-Date: 2012-11-05 07:28+0000\n"
 "X-Generator: Launchpad (build 16232)\n"
 
+
+msgid "FORWARDS"
+msgstr ""
+
+msgid "BACKS"
+msgstr ""
+
+msgid "PROP"
+msgstr ""
+
+msgid "HOOKER"
+msgstr ""
+
+msgid "LOCKS"
+msgstr ""
+
+msgid "FLANKER"
+msgstr ""
+
+msgid "NUMBER 8"
+msgstr ""
+
+msgid "SCRUM_HALF"
+msgstr ""
+
+msgid "FLY_HALF"
+msgstr ""
+
+msgid "CENTRE"
+msgstr ""
+
+msgid "WING"
+msgstr ""
+
+msgid "FULL-BACK"
+msgstr ""
+
+msgid "ATTENDANCE"
+msgstr ""
+
+msgid "ACTIVE"
+msgstr ""
+
+msgid "DELETE_PLAYER"
+msgstr ""
+
+
+msgid "ABSENT"
+msgstr ""
+
+msgid "FIRST_EXPERIENCE"
+msgstr ""
+
+msgid "GENDER"
+msgstr ""
+
+msgid "MALE"
+msgstr ""
+
+msgid "FEMALE"
+msgstr ""
+
+msgid "CATEGORY"
+msgstr ""
+
+msgid "JUVENILE"
+msgstr ""
+
+msgid "INFANTILE"
+msgstr ""
+
+msgid "ADULT"
+msgstr ""
+
+
+msgid "POSITION_IN_BOARD"
+msgstr ""
+
+msgid "PRESIDENT"
+msgstr ""
+
+msgid "VICEPRESIDENT"
+msgstr ""
+	
+msgid "SECRETARYGENERAL"
+msgstr ""
+
+msgid "BOARD_MEMBER"
+msgstr ""
+
+
+msgid "TREASURER"
+msgstr ""
+
+msgid "COMMUNICATION"
+msgstr ""
+
+msgid "OTHER_POSITION"
+msgstr ""
+
+msgid "REFEREE"
+msgstr ""
+
+msgid "TRAINER"
+msgstr ""
+
+msgid "POSITION"
+msgstr ""
+
 msgid "PHONE_LINE"
 msgstr ""
 

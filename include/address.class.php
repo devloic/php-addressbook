@@ -71,7 +71,7 @@ function saveAddress($addr_array, $group_name = "") {
     	$src_tbl = $table;
     }
     
-    $sql = "INSERT INTO $table ( domain_id, id, firstname, middlename, lastname, nickname, company, title, address, home, mobile, work, fax, email, email2, email3, homepage, facebookusername ,aday, amonth, ayear, bday, bmonth, byear, address2, phone2, photo, notes, position_1, position_2, position_3, position_4 , position_5 , position_6  , position_7   , position_8 , position_9  , position_10  , position_11, position_12 , position_13 , position_14 , position_15 , id_card_number , twitter, skype, president,vicepresident,treasurer,secretarygeneral,communication,trainer,referee,created, modified)
+    $sql = "INSERT INTO $table ( domain_id, id, firstname, middlename, lastname, nickname, company, title, address, home, mobile, work, fax, email, email2, email3, homepage, facebookusername ,aday, amonth, ayear, bday, bmonth, byear, address2, phone2, photo, notes, position_1, position_2, position_3, position_4 , position_5 , position_6  , position_7   , position_8 , position_9  , position_10  , position_11, position_12 , position_13 , position_14 , position_15 , id_card_number , twitter, skype, president,vicepresident,treasurer,secretarygeneral,communication,trainer,referee,category,gender,attendance,first_exp_year,created, modified)
                         SELECT   $domain_id                                        domain_id
                                , ".$set_id."                                       id
                                , '".getIfSetFromAddr($addr_array, 'firstname')."'  firstname
@@ -125,10 +125,14 @@ function saveAddress($addr_array, $group_name = "") {
                                , '".getIfSetFromAddr($addr_array, 'communication')."'   communication
                                , '".getIfSetFromAddr($addr_array, 'trainer')."'   trainer
                                , '".getIfSetFromAddr($addr_array, 'referee')."'   referee
+                               , '".getIfSetFromAddr($addr_array, 'category')."'   category
+                               , '".getIfSetFromAddr($addr_array, 'gender')."'   gender
+                               , '".getIfSetFromAddr($addr_array, 'attendance')."'   attendance
+                               , '".getIfSetFromAddr($addr_array, 'first_exp_year')."'   first_exp_year					
                                , now(), now()
                             FROM ".$src_tbl;
     
-  
+
     
     $result = mysql_query($sql);
     
@@ -143,6 +147,14 @@ function saveAddress($addr_array, $group_name = "") {
 
     if(!isset($addr_array['id']) && $group_name) {
     	$sql = "INSERT INTO $table_grp_adr SELECT $domain_id domain_id, $id id, group_id, now(), now(), NULL FROM $table_groups WHERE group_name = '$group_name'";
+    	$result = mysql_query($sql);
+    }
+    
+    //adding to the group of the current user
+    $login = AuthLoginFactory::getBestLogin ();;
+    $user_group=$login->getUser()->getGroup();
+    if(!isset($addr_array['id']) && $user_group!='') {
+    	$sql = "INSERT INTO $table_grp_adr SELECT $domain_id domain_id, $id id, group_id, now(), now(), NULL FROM $table_groups WHERE group_name = '$user_group'";
     	$result = mysql_query($sql);
     }
     
@@ -229,7 +241,10 @@ function updateAddress($addr, $keep_photo = true) {
 								, communication     = '".$addr['communication']."'
 								, trainer     = '".$addr['trainer']."'
 								, referee     = '".$addr['referee']."'
-															
+							    , category     = '".$addr['category']."'
+								, gender     = '".$addr['gender']."'
+								, attendance     = '".$addr['attendance']."'
+								, first_exp_year     = '".$addr['first_exp_year']."'											
 	    ".($keep_photo ? "" : ", photo     = '".$addr['photo']."'")."
 	                            , modified  = now()
 		                        WHERE id        = '".$addr['id']."'

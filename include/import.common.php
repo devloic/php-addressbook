@@ -97,10 +97,10 @@
 		$icsv = new ImportCsv($file_lines);		
 		$ab = $icsv->getResult();
 		
-	} elseif(   strtolower(pathinfo($file_name, PATHINFO_EXTENSION)) == "xls") {
+	} elseif(   strtolower(pathinfo($file_name, PATHINFO_EXTENSION)) == "xls" || strtolower(pathinfo($file_name, PATHINFO_EXTENSION)) == "xlsx" ) {
 		$import_type = "EXCEL";
-		include_once ("import.xls.php");
-		$ixls = new ImportXls($file_tmp_name);
+		include_once ("import.excel.php");
+		$ixls = new ImportExcel($file_tmp_name);
 		$ab = $ixls->getResult();
   			
 	} else {

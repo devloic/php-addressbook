@@ -62,7 +62,7 @@ if(isset($table_groups) and $table_groups != "" and !$is_fix_group) { ?>
 <div>
 
 <form id="right" method="get">
-	<select name="group" onchange="this.parentNode.submit()">
+	<?php echo msg("CLUBS").":"; ?>&nbsp;<select name="group" onchange="this.parentNode.submit()">
 		<?php
 			if($group_name != "") {
 				echo "<option>$group_name</option>\n";
@@ -81,45 +81,77 @@ if(isset($table_groups) and $table_groups != "" and !$is_fix_group) { ?>
 			}
 		?>
 	</select>
-	&nbsp;
+	&nbsp;&nbsp;<?php echo msg("POSITION").":"; ?>
 	<select name="position_filter" onchange="this.parentNode.submit()">
 		<?php
 			if($position_filter != "") {
-				echo "<option>$position_filter</option>\n";
+					$position_filter2=str_replace('[', '', $position_filter);
+					$position_filter2=str_replace(']', '', $position_filter2);
+				echo "<option value='[".$position_filter2."]'>[".msg($position_filter2)."]</option>\n";
 			}
 		?>
 		<option value="">[<?php echo msg("ALL"); ?>]</option>
 		<option value="[none]">[<?php echo msg("NONE"); ?>]</option>
-		<option >[<?php echo msg("FORWARDS"); ?>]</option>
-		<option >[<?php echo msg("BACKS"); ?>]</option>
-		<option >[<?php echo msg("PROP"); ?>]</option>
-		<option >[<?php echo msg("HOOKER"); ?>]</option>
-		<option >[<?php echo msg("LOCKS"); ?>]</option>
-		<option >[<?php echo msg("FLANKER"); ?>]</option>
-		<option >[<?php echo msg("NUMBER 8"); ?>]</option>
-		<option >[<?php echo msg("SCRUM_HALF"); ?>]</option>
-		<option >[<?php echo msg("FLY_HALF"); ?>]</option>
-		<option >[<?php echo msg("CENTRE"); ?>]</option>
-		<option >[<?php echo msg("WING"); ?>]</option>
-		<option >[<?php echo msg("FULL-BACK"); ?>]</option>
+		<option value="[FORWARDS]">[<?php echo msg("FORWARDS"); ?>]</option>
+		<option value="[BACKS]">[<?php echo msg("BACKS"); ?>]</option>
+		<option value="[PROP]">[<?php echo msg("PROP"); ?>]</option>
+		<option value="[HOOKER]">[<?php echo msg("HOOKER"); ?>]</option>
+		<option value="[LOCKS]">[<?php echo msg("LOCKS"); ?>]</option>
+		<option value="[FLANKER]">[<?php echo msg("FLANKER"); ?>]</option>
+		<option value="[NUMBER 8]">[<?php echo msg("NUMBER 8"); ?>]</option>
+		<option value="[SCRUM_HALF]">[<?php echo msg("SCRUM_HALF"); ?>]</option>
+		<option value="[FLY_HALF]">[<?php echo msg("FLY_HALF"); ?>]</option>
+		<option value="[CENTRE]">[<?php echo msg("CENTRE"); ?>]</option>
+		<option value="[WING]">[<?php echo msg("WING"); ?>]</option>
+		<option value="[FULL-BACK]">[<?php echo msg("FULL-BACK"); ?>]</option>
 	</select>
-	<select name="role_filter" onchange="this.parentNode.submit()" style="margin-bottom: 10px" >
+	&nbsp;<?php echo msg("POSITION_IN_BOARD").":"; ?>&nbsp;<select name="role_filter" onchange="this.parentNode.submit()" style="margin-bottom: 10px" >
 		<?php
 			if($role_filter != "") {
-				echo "<option>$role_filter</option>\n";
+			$role_filter2=str_replace('[', '', $role_filter);
+			$role_filter2=str_replace(']', '', $role_filter2);
+				echo "<option value='[".$role_filter2."]'>[".msg($role_filter2)."]</option>\n";
 			}
 		?>
 		<option value="">[<?php echo msg("ALL"); ?>]</option>
 		<option value="[none]">[<?php echo msg("NONE"); ?>]</option>
-		<option >[<?php echo msg("BOARD MEMBER"); ?>]</option>
-		<option >[<?php echo msg("PRESIDENT"); ?>]</option>
-		<option >[<?php echo msg("VICEPRESIDENT"); ?>]</option>
-		<option >[<?php echo msg("SECRETARYGENERAL"); ?>]</option>
-		<option >[<?php echo msg("TREASURER"); ?>]</option>
-		<option >[<?php echo msg("COMMUNICATION"); ?>]</option>
-		<option >[<?php echo msg("TRAINER"); ?>]</option>
-		<option >[<?php echo msg("REFEREE"); ?>]</option>
+		<option value="[BOARD_MEMBER]">[<?php echo msg("BOARD_MEMBER"); ?>]</option>
+		<option value="[PRESIDENT]">[<?php echo msg("PRESIDENT"); ?>]</option>
+		<option value="[VICEPRESIDENT]">[<?php echo msg("VICEPRESIDENT"); ?>]</option>
+		<option value="[SECRETARYGENERAL]">[<?php echo msg("SECRETARYGENERAL"); ?>]</option>
+		<option value="[TREASURER]">[<?php echo msg("TREASURER"); ?>]</option>
+		<option value="[COMMUNICATION]">[<?php echo msg("COMMUNICATION"); ?>]</option>
+		<option value="[TRAINER]">[<?php echo msg("TRAINER"); ?>]</option>
+		<option value="[REFEREE]">[<?php echo msg("REFEREE"); ?>]</option>
 	</select>
+	<br/><?php echo msg("GENDER").":"; ?>&nbsp;<select name="gender_filter" onchange="this.parentNode.submit()" style="margin-bottom: 10px" >
+		<?php
+			if($gender_filter != "") {
+			$gender_filter2=str_replace('[', '', $gender_filter);
+			$gender_filter2=str_replace(']', '', $gender_filter2);
+				echo "<option value='[".$gender_filter2."]'>[".msg($gender_filter2)."]</option>\n";
+			}
+		?>
+		<option value="">[<?php echo msg("ALL"); ?>]</option>
+		<option value="[none]">[<?php echo msg("NONE"); ?>]</option>
+		<option value="[MALE]">[<?php echo msg("MALE"); ?>]</option>
+		<option value="[FEMALE]">[<?php echo msg("FEMALE"); ?>]</option>
+		</select>
+		
+		&nbsp;<?php echo msg("CATEGORY").":"; ?>&nbsp;<select name="category_filter" onchange="this.parentNode.submit()" style="margin-bottom: 10px" >
+		<?php
+			if($category_filter != "") {
+			$category_filter2=str_replace('[', '', $category_filter);
+			$category_filter2=str_replace(']', '', $category_filter2);
+				echo "<option value='[".$category_filter2."]'>[".msg($category_filter2)."]</option>\n";
+			}
+		?>
+		<option value="">[<?php echo msg("ALL"); ?>]</option>
+		<option value="[none]">[<?php echo msg("NONE"); ?>]</option>
+		<option value="[INFANTILE]">[<?php echo msg("INFANTILE"); ?>]</option>
+		<option value="[JUVENILE]">[<?php echo msg("JUVENILE"); ?>]</option>
+		<option value="[ADULT]">[<?php echo msg("ADULT"); ?>]</option>
+		</select>
 </form>
 
 
@@ -440,7 +472,7 @@ function DeleteSel() {
 	if(dst_count == 0)
 		alert("No paticipants selected.");
 	else
-		if(confirm('Delete '+dst_count+' addresses?')) {
+		if(confirm('Borrar '+dst_count+' jugador(es)?')) {
 	    location.href = "./delete.php?part="+participants;
 	  }
 }

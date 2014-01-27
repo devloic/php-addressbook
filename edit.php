@@ -1,4 +1,5 @@
 <?php
+
 include ("include/dbconnect.php");
 include ("include/format.inc.php");
 include ("include/photo.class.php");
@@ -55,7 +56,7 @@ echo $group;
 		value="<?php echo ucfmsg('DELETE') ?>"><?php echo ucfmsg('DELETE') ?></button>
 
 	</form>	
-	<form class="form-horizontal" enctype="multipart/form-data"
+	<form class="form-horizontal" style="margin: 0px 0px 0px 100px;" enctype="multipart/form-data"
 	accept-charset="utf-8" method="post" id="user_form"
 	action="edit<?php echo $page_ext; ?>">
 	
@@ -114,6 +115,87 @@ echo $group;
 		</div>
 	</div>
 	<div class="control-group">
+	<label class="control-label"><?php echo ucfmsg("GENDER") ?>:</label>
+	<div class="controls">
+	<div class="btn-group" data-toggle="buttons-radio">
+  <button type="button" id="radiogender_0" class="btn btn-primary"><?php echo ucfmsg("MALE") ?></button>
+  <button type="button" id="radiogender_1" class="btn btn-primary"><?php echo ucfmsg("FEMALE") ?></button>
+  </div>
+</div>
+	</div>
+	<input type="hidden" name="gender" id="hradiogender"
+			value="<?php $hgender=getIfSetFromAddr($addr, 'gender');echo ($hgender==""?"0":$hgender);?>">
+	
+	
+	
+	<div class="control-group">
+		<label class="control-label"><?php echo ucfmsg("BIRTHDAY") ?>:</label>
+		<div class="controls">
+			<select name="bday">
+			<?php   if(isset($addr['bday']) && $addr ['bday'] !='0') { ?>
+          <option value="<?php echoIfSet($addr, 'bday'); ?>"
+					selected="selected"><?php
+			echo ucfmsg ( strtoupper ( $addr ['bday'] ) );
+			?></option>
+     		<?php } ?>
+				<option value="0">-</option>
+				<option value="1">1</option>
+				<option value="2">2</option>
+				<option value="3">3</option>
+				<option value="4">4</option>
+				<option value="5">5</option>
+				<option value="6">6</option>
+				<option value="7">7</option>
+				<option value="8">8</option>
+				<option value="9">9</option>
+				<option value="10">10</option>
+				<option value="11">11</option>
+				<option value="12">12</option>
+				<option value="13">13</option>
+				<option value="14">14</option>
+				<option value="15">15</option>
+				<option value="16">16</option>
+				<option value="17">17</option>
+				<option value="18">18</option>
+				<option value="19">19</option>
+				<option value="20">20</option>
+				<option value="21">21</option>
+				<option value="22">22</option>
+				<option value="23">23</option>
+				<option value="24">24</option>
+				<option value="25">25</option>
+				<option value="26">26</option>
+				<option value="27">27</option>
+				<option value="28">28</option>
+				<option value="29">29</option>
+				<option value="30">30</option>
+				<option value="31">31</option>
+			</select> <select name="bmonth">
+     <?php   if(isset($addr['bmonth']) && $addr['bmonth'] !='-') { ?>
+          <option value="<?php echoIfSet($addr, 'bmonth'); ?>"
+					selected="selected"><?php
+			echo ucfmsg ( strtoupper ( $addr ['bmonth'] ) );
+			?></option>
+     <?php } ?>
+          		<option value="-">-</option>
+				<option value="January"><?php echo ucfmsg("JANUARY") ?></option>
+				<option value="February"><?php echo ucfmsg("FEBRUARY") ?></option>
+				<option value="March"><?php echo ucfmsg("MARCH") ?></option>
+				<option value="April"><?php echo ucfmsg("APRIL") ?></option>
+				<option value="May"><?php echo ucfmsg("MAY") ?></option>
+				<option value="June"><?php echo ucfmsg("JUNE") ?></option>
+				<option value="July"><?php echo ucfmsg("JULY") ?></option>
+				<option value="August"><?php echo ucfmsg("AUGUST") ?></option>
+				<option value="September"><?php echo ucfmsg("SEPTEMBER") ?></option>
+				<option value="October"><?php echo ucfmsg("OCTOBER") ?></option>
+				<option value="November"><?php echo ucfmsg("NOVEMBER") ?></option>
+				<option value="December"><?php echo ucfmsg("DECEMBER") ?></option>
+			</select> <input class="byear" type="text" name="byear" size="4"
+				maxlength="4" value="<?php echoIfSet($addr, 'byear'); ?>" />
+
+		</div>
+	</div>
+	<div class="control-group">
 		<label class="control-label"><?php echo ucfmsg("ID_CARD_NUMBER") ?>:</label>
 		<div class="controls">
 			<input type="text" name="id_card_number" size="35"
@@ -152,9 +234,34 @@ include_once "photo.php";
 	</div>
 	<?php }
 	?>
-	
+	<br/><br/>
+	<div class="control-group">
+	<label class="control-label"><?php echo ucfmsg("CATEGORY") ?>:</label>
+	<div class="controls">
+	<div class="btn-group" data-toggle="buttons-radio">
+  <button type="button" id="radiocategory_2" class="btn btn-primary"><?php echo ucfmsg("INFANTILE") ?></button>
+  <button type="button" id="radiocategory_1" class="btn btn-primary"><?php echo ucfmsg("JUVENILE") ?></button>
+   <button type="button" id="radiocategory_0" class="btn btn-primary"><?php echo ucfmsg("ADULT") ?></button>
+  </div>
+</div>
+	</div>
+	<input type="hidden" name="category" id="hradiocategory"
+			value="<?php $hcategory=getIfSetFromAddr($addr, 'category');echo ($hcategory==""?"0":$hcategory);?>">
+	<br/><br/>
+	<div class="control-group">
+	<label class="control-label"><?php echo ucfmsg("ATTENDANCE") ?>:</label>
+	<div class="controls">
+	<div class="btn-group" data-toggle="buttons-radio">
+  <button type="button" id="radioattendance_0" class="btn btn-primary"><?php echo ucfmsg("ACTIVE") ?></button>
+  <button type="button" id="radioattendance_1" class="btn btn-primary"><?php echo ucfmsg("ABSENT") ?></button>
+  </div>
+</div>
+	</div>
+	<input type="hidden" name="attendance" id="hradioattendance"
+			value="<?php $hattendance=getIfSetFromAddr($addr, 'attendance');echo ($hattendance==""?"0":$hattendance);?>">
+	<br/>
 <div class="control-group">
-	<label class="control-label"><?php echo ucfmsg("POSITION") ?>:</label><br />
+	<label class="control-label" style="text-decoration:underline"><?php echo ucfmsg("POSITION") ?>:</label><br />
 	<br />
 	<div class="controls">
 	<div class="btn-group" data-toggle="buttons-checkbox">
@@ -232,6 +339,7 @@ include_once "photo.php";
 	</div>
 	</div>
 	<br />
+	<br/>
 	<div class="controls">
 	<div class="btn-group" data-toggle="buttons-checkbox"
 		style="left: 50px">
@@ -254,9 +362,34 @@ include_once "photo.php";
 	
 	 <input type="hidden" name="company" value="" />
 	<input type="hidden" name="title" value="" />
+<br/>
 
+<div class="control-group">
+		<label class="control-label"><?php echo ucfmsg("FIRST_EXPERIENCE") ?>:</label>
+		<div class="controls">
+			<select name="first_exp_year">
+			<?php   if(isset($addr['first_exp_year']) && $addr ['first_exp_year'] !='0') { ?>
+          <option value="<?php echoIfSet($addr, 'first_exp_year'); ?>"
+					selected="selected"><?php
+			echo ucfmsg ( strtoupper ( $addr ['first_exp_year'] ) );
+			?></option>
+     		<?php } 
+     		$currentYear=date("Y");
+     		
+     		$i=0;
+     		while ($i<=40){
+				echo "<option value='".($currentYear-$i)."'>".($currentYear-$i)."</option>";
+				$i++;
+			}
+			?>
+				
+			</select> 
+
+		</div>
+	</div>
+	
 	<div class="control-group">
-		<label class="control-label"><?php echo ucfmsg("POSITION_IN_BOARD") ?></label>
+		<label class="control-label" style="text-decoration:underline"><?php echo ucfmsg("POSITION_IN_BOARD") ?>:</label>
 		<div class="controls">
 
 			<br class="clear" />
@@ -279,7 +412,7 @@ include_once "photo.php";
 	</div>
 
 	<div class="control-group">
-		<label class="control-label"><?php echo msg("SECRETARY_GENERAL") ?>:</label>
+		<label class="control-label"><?php echo msg("SECRETARYGENERAL") ?>:</label>
 		<div class="controls">
 			<input type="checkbox" name="secretarygeneral" <?php if($myrow['secretarygeneral'] ==1){?>CHECKED<?php } ?> style="position: relative;top: 5px;"/>
 
@@ -303,7 +436,7 @@ include_once "photo.php";
 	</div>
 
 	<div class="control-group">
-		<label class="control-label"><?php echo ucfmsg("OTHER_POSITION") ?></label>
+		<label class="control-label"><?php echo ucfmsg("OTHER_POSITION") ?>:</label>
 		<div class="controls">
 
 			<br class="clear" />
@@ -326,7 +459,8 @@ include_once "photo.php";
 		</div>
 	</div>
 	<br/>
-	
+	<br/>
+	<br/>
 	<div class="control-group">
 		<label class="control-label"><?php echo ucfmsg("ADDRESS") ?>:</label>
 		<div class="controls">
@@ -335,8 +469,9 @@ include_once "photo.php";
 
 		</div>
 	</div>
+	<br/>
 	<div class="control-group">
-		<label class="control-label"><?php echo ucfmsg("TELEPHONE") ?></label>
+		<label class="control-label" style="text-decoration:underline"><?php echo ucfmsg("TELEPHONE") ?>:</label>
 		<div class="controls">
 
 			<br class="clear" />
@@ -449,73 +584,7 @@ include_once "photo.php";
 		</div>
 
 	</div>
-	<div class="control-group">
-		<label class="control-label"><?php echo ucfmsg("BIRTHDAY") ?>:</label>
-		<div class="controls">
-			<select name="bday">
-			<?php   if(isset($addr['bday']) && $addr ['bday'] !='0') { ?>
-          <option value="<?php echoIfSet($addr, 'bday'); ?>"
-					selected="selected"><?php
-			echo ucfmsg ( strtoupper ( $addr ['bday'] ) );
-			?></option>
-     		<?php } ?>
-				<option value="0">-</option>
-				<option value="1">1</option>
-				<option value="2">2</option>
-				<option value="3">3</option>
-				<option value="4">4</option>
-				<option value="5">5</option>
-				<option value="6">6</option>
-				<option value="7">7</option>
-				<option value="8">8</option>
-				<option value="9">9</option>
-				<option value="10">10</option>
-				<option value="11">11</option>
-				<option value="12">12</option>
-				<option value="13">13</option>
-				<option value="14">14</option>
-				<option value="15">15</option>
-				<option value="16">16</option>
-				<option value="17">17</option>
-				<option value="18">18</option>
-				<option value="19">19</option>
-				<option value="20">20</option>
-				<option value="21">21</option>
-				<option value="22">22</option>
-				<option value="23">23</option>
-				<option value="24">24</option>
-				<option value="25">25</option>
-				<option value="26">26</option>
-				<option value="27">27</option>
-				<option value="28">28</option>
-				<option value="29">29</option>
-				<option value="30">30</option>
-				<option value="31">31</option>
-			</select> <select name="bmonth">
-     <?php   if(isset($addr['bmonth']) && $addr['bmonth'] !='-') { ?>
-          <option value="<?php echoIfSet($addr, 'bmonth'); ?>"
-					selected="selected"><?php
-			echo ucfmsg ( strtoupper ( $addr ['bmonth'] ) );
-			?></option>
-     <?php } ?>
-          		<option value="-">-</option>
-				<option value="January"><?php echo ucfmsg("JANUARY") ?></option>
-				<option value="February"><?php echo ucfmsg("FEBRUARY") ?></option>
-				<option value="March"><?php echo ucfmsg("MARCH") ?></option>
-				<option value="April"><?php echo ucfmsg("APRIL") ?></option>
-				<option value="May"><?php echo ucfmsg("MAY") ?></option>
-				<option value="June"><?php echo ucfmsg("JUNE") ?></option>
-				<option value="July"><?php echo ucfmsg("JULY") ?></option>
-				<option value="August"><?php echo ucfmsg("AUGUST") ?></option>
-				<option value="September"><?php echo ucfmsg("SEPTEMBER") ?></option>
-				<option value="October"><?php echo ucfmsg("OCTOBER") ?></option>
-				<option value="November"><?php echo ucfmsg("NOVEMBER") ?></option>
-				<option value="December"><?php echo ucfmsg("DECEMBER") ?></option>
-			</select> <input class="byear" type="text" name="byear" size="4"
-				maxlength="4" value="<?php echoIfSet($addr, 'byear'); ?>" />
-
-		</div>
-	</div>
+	
 	<?php 
 /*
 		       * <div class="control-group"> <label class="control-label"><?php echo ucfmsg("ANNIVERSARY") ?>:</label> <div class="controls"> <select name="aday"> <option value="<?php echoIfSet($addr, 'aday'); ?>" selected="selected"><?php echoIfSet($addr, 'aday'); ?></option> <option value="0">-</option> <option value="1">1</option> <option value="2">2</option> <option value="3">3</option> <option value="4">4</option> <option value="5">5</option> <option value="6">6</option> <option value="7">7</option> <option value="8">8</option> <option value="9">9</option> <option value="10">10</option> <option value="11">11</option> <option value="12">12</option> <option value="13">13</option> <option value="14">14</option> <option value="15">15</option> <option value="16">16</option> <option value="17">17</option> <option value="18">18</option> <option value="19">19</option> <option value="20">20</option> <option value="21">21</option> <option value="22">22</option> <option value="23">23</option> <option value="24">24</option> <option value="25">25</option> <option value="26">26</option> <option value="27">27</option> <option value="28">28</option> <option value="29">29</option> <option value="30">30</option> <option value="31">31</option> </select> <select name="amonth"> <?php if(isset($addr['amonth'])) { ?> <option value="<?php echoIfSet($addr, 'amonth'); ?>" selected="selected"><?php echo ucfmsg ( strtoupper ( $addr ['amonth'] ) ); ?></option> <?php } ?> <option value="-">-</option> <option value="January"><?php echo ucfmsg("JANUARY") ?></option> <option value="February"><?php echo ucfmsg("FEBRUARY") ?></option> <option value="March"><?php echo ucfmsg("MARCH") ?></option> <option value="April"><?php echo ucfmsg("APRIL") ?></option> <option value="May"><?php echo ucfmsg("MAY") ?></option> <option value="June"><?php echo ucfmsg("JUNE") ?></option> <option value="July"><?php echo ucfmsg("JULY") ?></option> <option value="August"><?php echo ucfmsg("AUGUST") ?></option> <option value="September"><?php echo ucfmsg("SEPTEMBER") ?></option> <option value="October"><?php echo ucfmsg("OCTOBER") ?></option> <option value="November"><?php echo ucfmsg("NOVEMBER") ?></option> <option value="December"><?php echo ucfmsg("DECEMBER") ?></option> </select> <input class="byear" type="text" name="ayear" size="4" maxlength="4" value="<?php echoIfSet($addr, 'ayear'); ?>" /> </div> </div>
@@ -599,6 +668,8 @@ include_once "photo.php";
 			$('#bposition_'+i).addClass('active');
 		}
 	}
+
+	
 	
 	$('.position').on('click',function(e) {
 		var index=$(this).attr('id').replace('bposition_','');
@@ -609,7 +680,24 @@ include_once "photo.php";
 				$('#position_'+index).val("1");
 			}
 	});
+
+//radios
 	
+	$( "[id^=hradio]" ).each(function( index ) {
+		
+		var bid=$( this ).attr('id')+'_'+$( this ).val();
+		bid=bid.substring(1);
+		$( "#"+bid ).addClass('active');
+			
+		
+		});
+	$('[id^=radio]').on('click',function(e) {
+		var id=$(this).attr('id');
+		var val=id.substring(id.indexOf('_')+1);
+		var idh='h'+id.substring(0,id.indexOf('_'));
+		$('#'+idh).val(val);
+	
+	});
 	
 	</script>
 <?php 	
@@ -618,7 +706,7 @@ include_once "photo.php";
 function getAdrArray($update=null){
 	global $id,$firstname,$middlename,$lastname,$nickname,$title,$company,$address,$home,$mobile,$work,$fax,$email,$email2,$email3,$homepage,$facebookusername,$bday,
 	$bmonth,$byear,$aday,$amonth,$ayear,$address2,$phone2,$notes,$position_1,$position_2,$position_3,$position_4,$position_5,$position_6,$position_7,$position_8,$position_9,$position_10,
-	$position_11,$position_12,$position_13,$position_14,$position_15,$id_card_number,$twitter,$skype,$president,$vicepresident,$treasurer,$secretarygeneral,$communication,$trainer,$referee;
+	$position_11,$position_12,$position_13,$position_14,$position_15,$id_card_number,$twitter,$skype,$president,$vicepresident,$treasurer,$secretarygeneral,$communication,$trainer,$referee,$category,$gender,$attendance,$first_exp_year;
 	
 	if($update){
 		$addr ['id'] = $id;
@@ -674,6 +762,10 @@ function getAdrArray($update=null){
 	$addr ['communication'] = isset($communication);
 	$addr ['trainer'] = isset($trainer);
 	$addr ['referee'] = isset($referee);
+	$addr ['category'] = $category;
+	$addr ['gender'] = $gender;
+	$addr ['attendance'] = $attendance;
+	$addr ['first_exp_year'] = $first_exp_year;
 	
 	return $addr;
 }

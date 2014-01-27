@@ -25,7 +25,7 @@
   
   	// Add to result
   	if($use_utf_16LE) {  		
-  	  $res = ($first ? "" : "\t" ) . '"'.$res.'"';
+  	  $res = ($first ? "" : ";" ) . '"'.$res.'"';
       print mb_convert_encoding( $res, 'UTF-16LE', 'UTF-8');
       
     } else { // Fallback to ISO-8859-1
@@ -87,6 +87,8 @@ SELECT addr_addressbook.*, b_month_lookup .bmonth_num, amonth_num amonth_num FRO
 	add(ucfmsg("FACEBOOK"));
 	add(ucfmsg("SKYPE"));
 	add(ucfmsg("TWITTER"));
+	# id card number
+	add(ucfmsg("ID_CARD_NUMBER"));
 	
   if($use_utf_16LE)
   	print mb_convert_encoding( "\n", 'UTF-16LE', 'UTF-8');
@@ -151,6 +153,7 @@ SELECT addr_addressbook.*, b_month_lookup .bmonth_num, amonth_num amonth_num FRO
 		add($myrow["facebookusername"]);
 		add($myrow["skype"]);
 		add($myrow["twitter"]);
+		add($myrow["id_card_number"]);
 
     if($use_utf_16LE)
     	print mb_convert_encoding( "\n", 'UTF-16LE', 'UTF-8');

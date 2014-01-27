@@ -3,7 +3,7 @@
 * http://www.dynamicdrive.com/dynamicindex1/popupmenu.htm
 * http://www.alistapart.com/articles/horizdropdowns/
 -->
-<ul>
+<ul style="margin:0 0 10px 110px;">
 <li>
 	<a href="./<?php echo ($group == "" || $group == "[none]" || $is_fix_group ? "" : "?group=".$group); ?>"><?php echo msg('HOME'); ?></a>
 </li>

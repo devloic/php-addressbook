@@ -11,10 +11,11 @@ class ImportDel {
   	global $del_format;
 
     $count = 0;
+   
     foreach($this->data as $rec) {
 
     	$count++;
-    	if($count <= $this->col_offset)
+    	if($count <= $this->row_offset)
     	  continue;
 
       $keys = array_keys($rec);

@@ -9,7 +9,10 @@ include ("include/photo.class.php");
 
 echo "<h1>".ucfmsg('CLUBS')."</h1>";
 
-if($read_only) {
+//only allow root role
+$login = AuthLoginFactory::getBestLogin ();;
+$is_root=$login->hasRoles(array('root'));
+if(!$is_root ) {
 	echo "<br /><div class='msgbox'>Editing is disabled.<br /><i>return to the <a href='group$page_ext'>group page</a></i></div>";
 } else {
 if($submit) {

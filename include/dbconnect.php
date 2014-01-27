@@ -5,7 +5,7 @@
 include ("config/config.php");
 
 // Check for any mistakes (Debugging)
-error_reporting ( E_NOTICE );
+error_reporting ( E_ALL );
 // http://www.php.net/ini.core
 // * short_open_tag "0"
 // * register_globals "0"
@@ -229,6 +229,14 @@ if (!isset ( $role_filter )) {
 	$role_filter = '';
 }
 
+if (!isset ( $gender_filter )) {
+	$gender_filter = '';
+}
+
+if (!isset ( $category_filter )) {
+	$category_filter = '';
+}
+
 
 
 $is_fix_group = false;
@@ -447,6 +455,33 @@ if ($position_filter == "") {
 }
 
 
+if ($category_filter == "") {
+
+} else {
+	if ($category_filter == "[none]" ) {
+
+	}
+	elseif($category_filter =='[ADULT]') {
+		$base_where .= " AND ( category=0 ) ";
+	}elseif($category_filter =='[JUVENILE]') {
+		$base_where .= " AND ( category=1 ) ";
+	}elseif($category_filter =='[INFANTILE]') {
+		$base_where .= " AND ( category=2 ) ";
+	}
+}
+
+if ($gender_filter == "") {
+
+} else {
+	if ($gender_filter == "[none]" ) {
+	
+	}
+	elseif($gender_filter =='[MALE]') {
+		$base_where .= " AND ( gender=0 ) ";
+	}elseif($gender_filter =='[FEMALE]') {
+		$base_where .= " AND ( gender=1 ) ";
+	}
+}
 
 if ($role_filter == "") {
 
@@ -455,7 +490,7 @@ if ($role_filter == "") {
 	if ($role_filter == "[none]" ) {
 
 	}
-	elseif($role_filter =='[BOARD MEMBER]') {
+	elseif($role_filter =='[BOARD_MEMBER]') {
 		$base_where .= " AND ( president=1 OR vicepresident=1 OR secretarygeneral=1 OR treasurer=1 OR communication=1) ";
 	}
 	elseif($role_filter =='[PRESIDENT]') {

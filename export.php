@@ -47,6 +47,14 @@
   	
      require "include/export.xls-nokia.php";     
      
+  } elseif(isset($_REQUEST['type']) && $_REQUEST['type'] == "xls") {  	
+  	
+     require "include/export.xls.php";     
+     
+  } elseif(isset($_REQUEST['type']) && $_REQUEST['type'] == "xlsx") {  	
+  	
+     require "include/export.xlsx.php";     
+     
   } else {
   	
 	include ("include/format.inc.php");
@@ -79,6 +87,22 @@
 <form>
   <label>CSV for Nokia:</label>
   <input type="hidden" name="type"   value="xls-Nokia">
+  <button class='btn btn-success' name='submit' type='submit'   value="Download">Download</button>
+  <br>
+</form>
+<br>
+<form>
+  <label>XLS (97-2003)</label>
+  <input type="hidden" name="type"   value="xls">
+  <input type="hidden" name="group"  value="<?php echo $group; ?>">
+  <button class='btn btn-success' name='submit' type='submit'   value="Download">Download</button>
+  <br>
+</form>
+<br>
+<form>
+  <label>XLSX</label>
+  <input type="hidden" name="type"   value="xlsx">
+  <input type="hidden" name="group"  value="<?php echo $group; ?>">
   <button class='btn btn-success' name='submit' type='submit'   value="Download">Download</button>
   <br>
 </form>

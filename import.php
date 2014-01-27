@@ -21,7 +21,7 @@ if(!$submit) {
 <form method="post" enctype="multipart/form-data">
   <div class="fileupload fileupload-new" data-provides="fileupload">
 	  <div class="input-append">
-	  <label class="control-label" size=50 for="file">LDIF/VCF/CSV/XLS:</label>
+	  <label class="control-label" size=50 for="file" style="width:14em;padding-top: 5px;">LDIF/VCF/CSV/XLS/XLSX:</label>
 	    <div class="uneditable-input span3"><i class="icon-file fileupload-exists"></i> <span class="fileupload-preview"></span></div><span class="btn btn-file"><span class="fileupload-new">Select File</span><span class="fileupload-exists">Change</span><input type="file" id="file" size=40 name="file" /></span><a href="#" class="btn fileupload-exists" data-dismiss="fileupload">Remove</a>
 	  </div>
   </div>
