@@ -133,7 +133,6 @@ if(isset($table_groups) and $table_groups != "" and !$is_fix_group) { ?>
 			}
 		?>
 		<option value="">[<?php echo msg("ALL"); ?>]</option>
-		<option value="[none]">[<?php echo msg("NONE"); ?>]</option>
 		<option value="[MALE]">[<?php echo msg("MALE"); ?>]</option>
 		<option value="[FEMALE]">[<?php echo msg("FEMALE"); ?>]</option>
 		</select>
@@ -147,10 +146,21 @@ if(isset($table_groups) and $table_groups != "" and !$is_fix_group) { ?>
 			}
 		?>
 		<option value="">[<?php echo msg("ALL"); ?>]</option>
-		<option value="[none]">[<?php echo msg("NONE"); ?>]</option>
 		<option value="[INFANTILE]">[<?php echo msg("INFANTILE"); ?>]</option>
 		<option value="[JUVENILE]">[<?php echo msg("JUVENILE"); ?>]</option>
 		<option value="[ADULT]">[<?php echo msg("ADULT"); ?>]</option>
+		</select>
+		&nbsp;<?php echo msg("ATTENDANCE").":"; ?>&nbsp;<select name="attendance_filter" onchange="this.parentNode.submit()" style="margin-bottom: 10px" >
+		<?php
+			if($attendance_filter != "") {
+			$attendance_filter2=str_replace('[', '', $attendance_filter);
+			$attendance_filter2=str_replace(']', '', $attendance_filter2);
+				echo "<option value='[".$attendance_filter2."]'>[".msg($attendance_filter2)."]</option>\n";
+			}
+		?>
+		<option value="">[<?php echo msg("ALL"); ?>]</option>
+		<option value="[ACTIVE]">[<?php echo msg("ACTIVE"); ?>]</option>
+		<option value="[ABSENT]">[<?php echo msg("ABSENT"); ?>]</option>
 		</select>
 </form>
 

@@ -237,6 +237,9 @@ if (!isset ( $category_filter )) {
 	$category_filter = '';
 }
 
+if (!isset ( $attendance_filter )) {
+	$attendance_filter = '';
+}
 
 
 $is_fix_group = false;
@@ -469,6 +472,20 @@ if ($category_filter == "") {
 		$base_where .= " AND ( category=2 ) ";
 	}
 }
+
+if ($attendance_filter == "") {
+
+} else {
+	if ($attendance_filter == "[none]" ) {
+
+	}
+	elseif($attendance_filter =='[ACTIVE]') {
+		$base_where .= " AND ( attendance=0 ) ";
+	}elseif($attendance_filter =='[ABSENT]') {
+		$base_where .= " AND ( attendance=1 ) ";
+	}
+}
+
 
 if ($gender_filter == "") {
 
