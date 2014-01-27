@@ -32,5 +32,21 @@
   	 $addr['skype']    = getIfSet($rec,15+$off);
   	 $addr['twitter']    = getIfSet($rec,16+$off);
   	 $addr['id_card_number']    = getIfSet($rec,17+$off);
+  	 $attendance = getIfSet($rec,18+$off);
+  	 if($attendance ==""){
+  	 	$attendance="0";
+  	 }
+  	 $addr['attendance']    = $attendance;
+  	 $gender = getIfSet($rec,19+$off);
+  	 if($gender ==""){
+  	 	$gender="0";
+  	 }
+  	 $addr['gender']    = $gender;
+  	 $category = getIfSet($rec,20+$off);
+  	 if($category ==""){
+  	 	$category="0";
+  	 }
+  	 $addr['category']    = $category;
+  	 
   	 
 ?>

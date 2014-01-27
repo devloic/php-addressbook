@@ -33,7 +33,9 @@ $activeSheet->setCellValueByColumnAndRow(14,$row, ucfmsg("FACEBOOK"));
 $activeSheet->setCellValueByColumnAndRow(15,$row, ucfmsg("SKYPE"));
 $activeSheet->setCellValueByColumnAndRow(16,$row, ucfmsg("TWITTER"));
 $activeSheet->setCellValueByColumnAndRow(17,$row, ucfmsg("ID_CARD_NUMBER"));
-
+$activeSheet->setCellValueByColumnAndRow(18,$row, ucfmsg("ATTENDANCE"));
+$activeSheet->setCellValueByColumnAndRow(19,$row, ucfmsg("GENDER"));
+$activeSheet->setCellValueByColumnAndRow(20,$row, ucfmsg("CATEGORY"));
 $row=2;
 while ($myrow = mysql_fetch_array($result))
 {
@@ -93,8 +95,12 @@ $activeSheet->setCellValueByColumnAndRow(1,$row, $myrow["firstname"]);
 		   $activeSheet->setCellValueByColumnAndRow(14,$row, $myrow["facebookusername"]);
 		   $activeSheet->setCellValueByColumnAndRow(15,$row, $myrow["skype"]);
 		   $activeSheet->setCellValueByColumnAndRow(16,$row, $myrow["twitter"]);
+		   
 		   $activeSheet->setCellValueByColumnAndRow(17,$row, $myrow["id_card_number"]);
-		 
+		   $activeSheet->setCellValueByColumnAndRow(18,$row, $myrow["attendance"]);
+		   $activeSheet->setCellValueByColumnAndRow(19,$row, $myrow["gender"]);
+		   $activeSheet->setCellValueByColumnAndRow(20,$row, $myrow["category"]);
+		   
 
 		   $row++;
 }
