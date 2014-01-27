@@ -831,8 +831,8 @@ if ($submit) {
 		}
 		
 		if (isset ( $table_groups ) and $table_groups != "") {
-			
-		if ($new_group) {
+		
+		if (isset ($new_group) && $new_group) {
 				$g_name = $new_group;
 			} else {
 				$g_name = $group_name;
