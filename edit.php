@@ -178,18 +178,18 @@ echo $group;
 			?></option>
      <?php } ?>
           		<option value="-">-</option>
-				<option value="January"><?php echo ucfmsg("JANUARY") ?></option>
-				<option value="February"><?php echo ucfmsg("FEBRUARY") ?></option>
-				<option value="March"><?php echo ucfmsg("MARCH") ?></option>
-				<option value="April"><?php echo ucfmsg("APRIL") ?></option>
-				<option value="May"><?php echo ucfmsg("MAY") ?></option>
-				<option value="June"><?php echo ucfmsg("JUNE") ?></option>
-				<option value="July"><?php echo ucfmsg("JULY") ?></option>
-				<option value="August"><?php echo ucfmsg("AUGUST") ?></option>
-				<option value="September"><?php echo ucfmsg("SEPTEMBER") ?></option>
-				<option value="October"><?php echo ucfmsg("OCTOBER") ?></option>
-				<option value="November"><?php echo ucfmsg("NOVEMBER") ?></option>
-				<option value="December"><?php echo ucfmsg("DECEMBER") ?></option>
+				<option value="January">1-<?php echo ucfmsg("JANUARY") ?></option>
+				<option value="February">2-<?php echo ucfmsg("FEBRUARY") ?></option>
+				<option value="March">3-<?php echo ucfmsg("MARCH") ?></option>
+				<option value="April">4-<?php echo ucfmsg("APRIL") ?></option>
+				<option value="May">5-<?php echo ucfmsg("MAY") ?></option>
+				<option value="June">6-<?php echo ucfmsg("JUNE") ?></option>
+				<option value="July">7-<?php echo ucfmsg("JULY") ?></option>
+				<option value="August">8-<?php echo ucfmsg("AUGUST") ?></option>
+				<option value="September">9-<?php echo ucfmsg("SEPTEMBER") ?></option>
+				<option value="October">10-<?php echo ucfmsg("OCTOBER") ?></option>
+				<option value="November">11-<?php echo ucfmsg("NOVEMBER") ?></option>
+				<option value="December">12-<?php echo ucfmsg("DECEMBER") ?></option>
 			</select> <input class="byear" type="text" name="byear" size="4"
 				maxlength="4" value="<?php echoIfSet($addr, 'byear'); ?>" />
 
@@ -203,7 +203,32 @@ echo $group;
 
 		</div>
 	</div>
-	
+	<div class="control-group">
+		<label class="control-label"><?php echo ucfmsg("EMAIL") ?>:</label>
+		<div class="controls">
+			<input type="text" name="email"
+				value="<?php echoIfSet($addr, 'email'); ?>" size="35"
+				 />
+
+		</div>
+	</div>
+	<div class="control-group">
+		<label class="control-label"><?php echo ucfmsg("PHONE_MOBILE") ?>:</label>
+		<div class="controls">
+			<input type="text" name="mobile"
+				value="<?php echoIfSet($addr, 'mobile'); ?>" size="35" />
+
+		</div>
+	</div>
+	<div class="control-group">
+		<label class="control-label"><?php echo ucfmsg("FACEBOOKUSERNAME"); ?>:</label>
+		<div class="controls">
+			<input type="text" name="facebookusername"
+				value="<?php echoIfSet($addr, 'facebookusername'); ?>" size="24" />
+		</div>
+		<?php echo '(ex: https://www.facebook.com/lapazrugby => lapazrugby)';?>
+		
+	</div>
 	    <div class="fileupload fileupload-new" data-provides="fileupload">
 	  <div class="input-append">
 	  <label class="control-label"><?php echo ucfmsg("PHOTO") ?>:</label>
@@ -254,6 +279,7 @@ include_once "photo.php";
 	<div class="btn-group" data-toggle="buttons-radio">
   <button type="button" id="radioattendance_0" class="btn btn-primary"><?php echo ucfmsg("ACTIVE") ?></button>
   <button type="button" id="radioattendance_1" class="btn btn-primary"><?php echo ucfmsg("ABSENT") ?></button>
+  <button type="button" id="radioattendance_2" class="btn btn-primary"><?php echo ucfmsg("OUT_OF_CITY") ?></button>
   </div>
 </div>
 	</div>
@@ -479,6 +505,14 @@ include_once "photo.php";
 		</div>
 	</div>
 	<div class="control-group">
+		<label class="control-label"><?php echo ucfmsg("PHONE_MOBILE") ?> 2:</label>
+		<div class="controls">
+			<input type="text" name="mobile2"
+				value="<?php echoIfSet($addr, 'mobile2'); ?>" size="35" />
+
+		</div>
+	</div>
+	<div class="control-group">
 		<label class="control-label"><?php echo ucfmsg("PHONE_HOME") ?>:</label>
 		<div class="controls">
 			<input type="text" name="home"
@@ -486,14 +520,7 @@ include_once "photo.php";
 
 		</div>
 	</div>
-	<div class="control-group">
-		<label class="control-label"><?php echo ucfmsg("PHONE_MOBILE") ?>:</label>
-		<div class="controls">
-			<input type="text" name="mobile"
-				value="<?php echoIfSet($addr, 'mobile'); ?>" size="35" />
-
-		</div>
-	</div>
+	
 	<div class="control-group">
 		<label class="control-label"><?php echo ucfmsg("PHONE_WORK") ?>:</label>
 		<div class="controls">
@@ -518,15 +545,7 @@ include_once "photo.php";
 
 		</div>
 	</div>
-	<div class="control-group">
-		<label class="control-label"><?php echo ucfmsg("EMAIL") ?>:</label>
-		<div class="controls">
-			<input type="text" name="email"
-				value="<?php echoIfSet($addr, 'email'); ?>" size="35"
-				 />
-
-		</div>
-	</div>
+	
 	<div class="control-group">
 		<label class="control-label"><?php echo ucfmsg("EMAIL") ?>2:</label>
 		<div class="controls">
@@ -553,15 +572,7 @@ include_once "photo.php";
 
 		</div>
 	</div>
-	<div class="control-group">
-		<label class="control-label"><?php echo ucfmsg("FACEBOOKUSERNAME"); ?>:</label>
-		<div class="controls">
-			<input type="text" name="facebookusername"
-				value="<?php echoIfSet($addr, 'facebookusername'); ?>" size="24" />
-		</div>
-		<?php echo '(ex: https://www.facebook.com/lapazrugby => lapazrugby)';?>
-		
-	</div>
+	
 
 	<div class="control-group">
 		<label class="control-label"><?php echo ucfmsg("TWITTER");?>:</label>
@@ -704,7 +715,7 @@ include_once "photo.php";
 }
 
 function getAdrArray($update=null){
-	global $id,$firstname,$middlename,$lastname,$nickname,$title,$company,$address,$home,$mobile,$work,$fax,$email,$email2,$email3,$homepage,$facebookusername,$bday,
+	global $id,$firstname,$middlename,$lastname,$nickname,$title,$company,$address,$home,$mobile,$mobile2,$work,$fax,$email,$email2,$email3,$homepage,$facebookusername,$bday,
 	$bmonth,$byear,$aday,$amonth,$ayear,$address2,$phone2,$notes,$position_1,$position_2,$position_3,$position_4,$position_5,$position_6,$position_7,$position_8,$position_9,$position_10,
 	$position_11,$position_12,$position_13,$position_14,$position_15,$id_card_number,$twitter,$skype,$president,$vicepresident,$treasurer,$secretarygeneral,$communication,$trainer,$referee,$category,$gender,$attendance,$first_exp_year;
 	
@@ -721,6 +732,7 @@ function getAdrArray($update=null){
 	$addr ['address'] = $address;
 	$addr ['home'] = $home;
 	$addr ['mobile'] = $mobile;
+	$addr ['mobile2'] = $mobile2;
 	$addr ['work'] = $work;
 	$addr ['fax'] = $fax;
 	$addr ['email'] = $email;

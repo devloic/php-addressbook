@@ -71,7 +71,7 @@ function saveAddress($addr_array, $group_name = "") {
     	$src_tbl = $table;
     }
     
-    $sql = "INSERT INTO $table ( domain_id, id, firstname, middlename, lastname, nickname, company, title, address, home, mobile, work, fax, email, email2, email3, homepage, facebookusername ,aday, amonth, ayear, bday, bmonth, byear, address2, phone2, photo, notes, position_1, position_2, position_3, position_4 , position_5 , position_6  , position_7   , position_8 , position_9  , position_10  , position_11, position_12 , position_13 , position_14 , position_15 , id_card_number , twitter, skype, president,vicepresident,treasurer,secretarygeneral,communication,trainer,referee,category,gender,attendance,first_exp_year,created, modified)
+    $sql = "INSERT INTO $table ( domain_id, id, firstname, middlename, lastname, nickname, company, title, address, home, mobile,mobile2, work, fax, email, email2, email3, homepage, facebookusername ,aday, amonth, ayear, bday, bmonth, byear, address2, phone2, photo, notes, position_1, position_2, position_3, position_4 , position_5 , position_6  , position_7   , position_8 , position_9  , position_10  , position_11, position_12 , position_13 , position_14 , position_15 , id_card_number , twitter, skype, president,vicepresident,treasurer,secretarygeneral,communication,trainer,referee,category,gender,attendance,first_exp_year,created, modified)
                         SELECT   $domain_id                                        domain_id
                                , ".$set_id."                                       id
                                , '".getIfSetFromAddr($addr_array, 'firstname')."'  firstname
@@ -83,6 +83,7 @@ function saveAddress($addr_array, $group_name = "") {
                                , '".getIfSetFromAddr($addr_array, 'address')."'    address
                                , '".getIfSetFromAddr($addr_array, 'home')."'       home
                                , '".getIfSetFromAddr($addr_array, 'mobile')."'     mobile
+                               , '".getIfSetFromAddr($addr_array, 'mobile2')."'     mobile2
                                , '".getIfSetFromAddr($addr_array, 'work')."'       work
                                , '".getIfSetFromAddr($addr_array, 'fax')."'        fax
                                , '".getIfSetFromAddr($addr_array, 'email')."'      email
@@ -200,6 +201,7 @@ function updateAddress($addr, $keep_photo = true) {
 	                            , address   = '".$addr['address']."'
 	                            , home      = '".$addr['home']."'
 	                            , mobile    = '".$addr['mobile']."'
+	                            , mobile2    = '".$addr['mobile2']."'
 	                            , work      = '".$addr['work']."'
 	                            , fax       = '".$addr['fax']."'
 	                            , email     = '".$addr['email']."'
@@ -303,6 +305,7 @@ class Address {
       $phones = array();
     	if($this->address["home"]   != "") $phones[] = $this->address["home"];
     	if($this->address["mobile"] != "") $phones[] = $this->address["mobile"];
+    	if($this->address["mobile2"] != "") $phones[] = $this->address["mobile2"];
     	if($this->address["work"]   != "") $phones[] = $this->address["work"];
     	if($this->address["phone2"] != "") $phones[] = $this->address["phone2"];
    	  return $phones;
@@ -425,6 +428,7 @@ class Addresses {
                           OR ".$this->likePhone('home',   $searchword)."
                           OR ".$this->likePhone('work',   $searchword)."
                           OR ".$this->likePhone('mobile', $searchword)."
+                          OR ".$this->likePhone('mobile2', $searchword)."
                           OR ".$this->likePhone('fax',    $searchword)."
                           OR email      LIKE '%$searchword%'
                           OR email2     LIKE '%$searchword%'

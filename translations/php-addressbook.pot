@@ -63,6 +63,9 @@ msgstr ""
 msgid "ABSENT"
 msgstr ""
 
+msgid "OUT_OF_CITY"
+msgstr ""
+
 msgid "FIRST_EXPERIENCE"
 msgstr ""
 

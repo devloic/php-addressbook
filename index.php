@@ -247,7 +247,7 @@ function addRow($row) {
         echo "<td>".(!empty($middlename) ? $middlename." " : "")."$lastname $firstname</td>";
         break;
         case "facebookusername":
-        	echo "<td>&nbsp;&nbsp;<a target='_blank' href='https://www.facebook.com/".$facebookusername."'>abrir facebook</a></td>";
+        	echo ($facebookusername != ''? "<td>&nbsp;&nbsp;<a target='_blank' href='https://www.facebook.com/".$facebookusername."'>abrir facebook</a></td>" :'<td>&nbsp;</td>');
         	break;
       case "photo":
 //        echo "<td>".embeddedImg($photo)."</td>";

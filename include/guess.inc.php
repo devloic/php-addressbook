@@ -313,6 +313,7 @@ function guessAddressFields($address) {
 
 	if(isset($home))     $result['home']   = $home;
   if(isset($mobile))   $result['mobile'] = $mobile;
+  if(isset($mobile2))   $result['mobile2'] = $mobile2;
   if(isset($work))     $result['work']   = $work;
 	if(isset($fax))      $result['fax']    = $fax;
 	if(isset($phone2))   $result['phone2'] = $phone2;
