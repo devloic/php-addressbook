@@ -484,6 +484,9 @@ if ($attendance_filter == "") {
 	}elseif($attendance_filter =='[ABSENT]') {
 		$base_where .= " AND ( attendance=1 ) ";
 	}
+	elseif($attendance_filter =='[OUT_OF_CITY]') {
+		$base_where .= " AND ( attendance=2 ) ";
+	}
 }
 
 

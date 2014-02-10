@@ -164,6 +164,7 @@ echo msg("CLUBS").":"; ?>&nbsp;<select name="group" onchange="this.parentNode.su
 		<option value="">[<?php echo msg("ALL"); ?>]</option>
 		<option value="[ACTIVE]">[<?php echo msg("ACTIVE"); ?>]</option>
 		<option value="[ABSENT]">[<?php echo msg("ABSENT"); ?>]</option>
+		<option value="[OUT_OF_CITY]">[<?php echo msg("OUT_OF_CITY"); ?>]</option>
 		</select>
 </form>
 
