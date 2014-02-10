@@ -221,6 +221,14 @@ echo $group;
 		</div>
 	</div>
 	<div class="control-group">
+		<label class="control-label"><?php echo ucfmsg("PROFESSION") ?>:</label>
+		<div class="controls">
+			<input type="text" name="profession"
+				value="<?php echoIfSet($addr, 'profession'); ?>" size="35" />
+
+		</div>
+	</div>
+	<div class="control-group">
 		<label class="control-label"><?php echo ucfmsg("FACEBOOKUSERNAME"); ?>:</label>
 		<div class="controls">
 			<input type="text" name="facebookusername"
@@ -717,7 +725,7 @@ include_once "photo.php";
 function getAdrArray($update=null){
 	global $id,$firstname,$middlename,$lastname,$nickname,$title,$company,$address,$home,$mobile,$mobile2,$work,$fax,$email,$email2,$email3,$homepage,$facebookusername,$bday,
 	$bmonth,$byear,$aday,$amonth,$ayear,$address2,$phone2,$notes,$position_1,$position_2,$position_3,$position_4,$position_5,$position_6,$position_7,$position_8,$position_9,$position_10,
-	$position_11,$position_12,$position_13,$position_14,$position_15,$id_card_number,$twitter,$skype,$president,$vicepresident,$treasurer,$secretarygeneral,$communication,$trainer,$referee,$category,$gender,$attendance,$first_exp_year;
+	$position_11,$position_12,$position_13,$position_14,$position_15,$id_card_number,$twitter,$skype,$president,$vicepresident,$treasurer,$secretarygeneral,$communication,$trainer,$referee,$category,$gender,$attendance,$first_exp_year,$profession;
 	
 	if($update){
 		$addr ['id'] = $id;
@@ -778,6 +786,7 @@ function getAdrArray($update=null){
 	$addr ['gender'] = $gender;
 	$addr ['attendance'] = $attendance;
 	$addr ['first_exp_year'] = $first_exp_year;
+	$addr ['profession'] = $profession;
 	
 	return $addr;
 }

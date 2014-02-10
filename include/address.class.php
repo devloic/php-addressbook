@@ -71,7 +71,7 @@ function saveAddress($addr_array, $group_name = "") {
     	$src_tbl = $table;
     }
     
-    $sql = "INSERT INTO $table ( domain_id, id, firstname, middlename, lastname, nickname, company, title, address, home, mobile,mobile2, work, fax, email, email2, email3, homepage, facebookusername ,aday, amonth, ayear, bday, bmonth, byear, address2, phone2, photo, notes, position_1, position_2, position_3, position_4 , position_5 , position_6  , position_7   , position_8 , position_9  , position_10  , position_11, position_12 , position_13 , position_14 , position_15 , id_card_number , twitter, skype, president,vicepresident,treasurer,secretarygeneral,communication,trainer,referee,category,gender,attendance,first_exp_year,created, modified)
+    $sql = "INSERT INTO $table ( domain_id, id, firstname, middlename, lastname, nickname, company, title, address, home, mobile,mobile2, work, fax, email, email2, email3, homepage, facebookusername ,aday, amonth, ayear, bday, bmonth, byear, address2, phone2, photo, notes, position_1, position_2, position_3, position_4 , position_5 , position_6  , position_7   , position_8 , position_9  , position_10  , position_11, position_12 , position_13 , position_14 , position_15 , id_card_number , twitter, skype, president,vicepresident,treasurer,secretarygeneral,communication,trainer,referee,category,gender,attendance,first_exp_year,profession,created, modified)
                         SELECT   $domain_id                                        domain_id
                                , ".$set_id."                                       id
                                , '".getIfSetFromAddr($addr_array, 'firstname')."'  firstname
@@ -129,7 +129,8 @@ function saveAddress($addr_array, $group_name = "") {
                                , '".getIfSetFromAddr($addr_array, 'category')."'   category
                                , '".getIfSetFromAddr($addr_array, 'gender')."'   gender
                                , '".getIfSetFromAddr($addr_array, 'attendance')."'   attendance
-                               , '".getIfSetFromAddr($addr_array, 'first_exp_year')."'   first_exp_year					
+                               , '".getIfSetFromAddr($addr_array, 'first_exp_year')."'   first_exp_year	
+                               , '".getIfSetFromAddr($addr_array, 'profession')."'   profession								
                                , now(), now()
                             FROM ".$src_tbl;
     
@@ -246,7 +247,8 @@ function updateAddress($addr, $keep_photo = true) {
 							    , category     = '".$addr['category']."'
 								, gender     = '".$addr['gender']."'
 								, attendance     = '".$addr['attendance']."'
-								, first_exp_year     = '".$addr['first_exp_year']."'											
+								, first_exp_year     = '".$addr['first_exp_year']."'
+								, profession     = '".$addr['profession']."'											
 	    ".($keep_photo ? "" : ", photo     = '".$addr['photo']."'")."
 	                            , modified  = now()
 		                        WHERE id        = '".$addr['id']."'
